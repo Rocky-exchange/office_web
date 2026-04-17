@@ -1,0 +1,557 @@
+:root {
+  --bg: #090908;
+  --bg-elevated: rgba(18, 17, 15, 0.82);
+  --surface: rgba(29, 25, 21, 0.72);
+  --surface-strong: rgba(24, 20, 17, 0.9);
+  --text: #f3eadb;
+  --muted: #b8ab95;
+  --line: rgba(255, 244, 227, 0.12);
+  --line-strong: rgba(255, 176, 84, 0.24);
+  --accent: #f09a4a;
+  --accent-soft: rgba(240, 154, 74, 0.16);
+  --sand: #d2c2a6;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --header-height: 5.5rem;
+  --content-width: min(1200px, calc(100vw - 48px));
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+a {
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.rocky-homepage {
+  position: relative;
+  min-height: 100vh;
+  overflow: clip;
+  background:
+    radial-gradient(circle at 50% 14%, rgba(240, 154, 74, 0.18), transparent 20rem),
+    linear-gradient(180deg, #2c312f 0%, #120f0d 30%, #090908 72%, #090908 100%);
+  color: var(--text);
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+.rocky-homepage::before {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+  background-size: 120px 120px;
+  content: '';
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.42), transparent 78%);
+  pointer-events: none;
+}
+
+.rocky-homepage .site-header,
+.rocky-homepage .hero-section,
+.rocky-homepage .panel-section,
+.rocky-homepage .trade-section {
+  width: var(--content-width);
+  margin: 0 auto;
+}
+
+.rocky-homepage .site-header {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--space-8);
+  align-items: center;
+  min-height: var(--header-height);
+  padding: var(--space-6) 0;
+}
+
+.rocky-homepage .brand-mark {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.875rem;
+  text-decoration: none;
+}
+
+.rocky-homepage .brand-mark__halo {
+  display: inline-block;
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, rgba(240, 154, 74, 0.9) 0%, rgba(240, 154, 74, 0) 62%),
+    #171412;
+  box-shadow: 0 0 40px rgba(240, 154, 74, 0.24);
+}
+
+.rocky-homepage .brand-mark__word {
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.5em;
+}
+
+.rocky-homepage .site-nav {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.rocky-homepage .site-nav a,
+.rocky-homepage .moat-card a {
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.rocky-homepage .site-nav a:hover,
+.rocky-homepage .moat-card a:hover {
+  color: var(--text);
+}
+
+.rocky-homepage .header-actions,
+.rocky-homepage .cta-row {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.rocky-homepage .primary-button,
+.rocky-homepage .ghost-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.875rem;
+  padding: 0 1.15rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.rocky-homepage .primary-button {
+  color: #100d0b;
+  background: linear-gradient(135deg, #f0a154 0%, #ffd09f 100%);
+  box-shadow: 0 10px 30px rgba(240, 154, 74, 0.18);
+}
+
+.rocky-homepage .ghost-button {
+  border-color: var(--line);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+}
+
+.rocky-homepage .primary-button:hover,
+.rocky-homepage .ghost-button:hover {
+  transform: translateY(-1px);
+}
+
+.rocky-homepage .hero-section {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.72fr);
+  gap: var(--space-10);
+  align-items: end;
+  min-height: calc(100svh - var(--header-height));
+  padding: var(--space-12) 0 var(--space-16);
+}
+
+.rocky-homepage .hero-atmosphere {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 244, 227, 0.05);
+  border-radius: 2rem;
+  background:
+    radial-gradient(circle at 50% 24%, rgba(240, 154, 74, 0.32), transparent 18rem),
+    linear-gradient(180deg, rgba(33, 41, 38, 0.44) 0%, rgba(14, 11, 10, 0.26) 36%, rgba(9, 9, 8, 0.88) 100%);
+  overflow: hidden;
+}
+
+.rocky-homepage .hero-horizon,
+.rocky-homepage .hero-monument,
+.rocky-homepage .hero-gridline {
+  position: absolute;
+}
+
+.rocky-homepage .hero-horizon {
+  inset: auto 0 0;
+  height: 48%;
+  background:
+    linear-gradient(180deg, transparent 0%, rgba(19, 15, 13, 0.55) 18%, rgba(9, 9, 8, 0.92) 100%),
+    radial-gradient(circle at 20% 60%, rgba(96, 75, 45, 0.7), transparent 20rem),
+    radial-gradient(circle at 78% 48%, rgba(84, 64, 43, 0.75), transparent 18rem);
+  clip-path: polygon(0 30%, 10% 26%, 25% 36%, 38% 31%, 50% 42%, 67% 30%, 80% 36%, 100% 24%, 100% 100%, 0 100%);
+}
+
+.rocky-homepage .hero-monument {
+  left: 52%;
+  bottom: 26%;
+  width: clamp(9rem, 16vw, 15rem);
+  aspect-ratio: 0.72;
+  transform: translateX(-50%);
+  border: 1px solid rgba(255, 214, 165, 0.15);
+  border-radius: 0.8rem 0.8rem 1.6rem 1.6rem;
+  background:
+    linear-gradient(180deg, rgba(255, 230, 196, 0.22) 0%, rgba(75, 53, 29, 0.3) 14%, rgba(14, 12, 11, 0.94) 100%);
+  box-shadow:
+    0 0 60px rgba(240, 154, 74, 0.12),
+    0 30px 90px rgba(0, 0, 0, 0.42);
+}
+
+.rocky-homepage .hero-monument::before,
+.rocky-homepage .hero-monument::after {
+  position: absolute;
+  inset: auto 14% 12%;
+  border: 1px solid rgba(255, 214, 165, 0.12);
+  border-radius: 999px;
+  content: '';
+}
+
+.rocky-homepage .hero-monument::before {
+  inset: 14% auto auto 18%;
+  width: 22%;
+  height: 22%;
+  background: radial-gradient(circle, rgba(255, 214, 165, 0.9), rgba(255, 214, 165, 0));
+}
+
+.rocky-homepage .hero-monument::after {
+  inset: auto 18% 10% auto;
+  width: 26%;
+  height: 26%;
+}
+
+.rocky-homepage .hero-gridline {
+  top: 12%;
+  bottom: 10%;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+}
+
+.rocky-homepage .hero-gridline--left {
+  left: 5%;
+}
+
+.rocky-homepage .hero-gridline--right {
+  right: 8%;
+}
+
+.rocky-homepage .hero-copy,
+.rocky-homepage .stat-grid {
+  position: relative;
+  z-index: 1;
+}
+
+.rocky-homepage .hero-copy {
+  padding: clamp(1.5rem, 5vw, 4rem);
+}
+
+.rocky-homepage .eyebrow,
+.rocky-homepage .stat-kicker,
+.rocky-homepage .moat-index {
+  margin: 0;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.rocky-homepage .hero-copy h1,
+.rocky-homepage .section-intro h2,
+.rocky-homepage .trade-copy h2 {
+  margin: 0;
+  font-weight: 700;
+  line-height: 0.95;
+  text-wrap: balance;
+}
+
+.rocky-homepage .hero-copy h1 {
+  max-width: 10ch;
+  margin-top: var(--space-4);
+  font-size: clamp(3.4rem, 9vw, 7rem);
+  letter-spacing: -0.05em;
+}
+
+.rocky-homepage .hero-summary {
+  max-width: 34rem;
+  margin: var(--space-5) 0 0;
+  color: var(--sand);
+  font-size: 1.08rem;
+  line-height: 1.65;
+}
+
+.rocky-homepage .cta-row {
+  margin-top: var(--space-8);
+}
+
+.rocky-homepage .stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+  align-self: center;
+  list-style: none;
+  margin: 0;
+  padding: 0 clamp(1.25rem, 2vw, 1.75rem);
+}
+
+.rocky-homepage .stat-grid li,
+.rocky-homepage .moat-card,
+.rocky-homepage .trade-panel__frame {
+  position: relative;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent),
+    var(--surface);
+  backdrop-filter: blur(10px);
+}
+
+.rocky-homepage .stat-grid li {
+  min-height: 9.5rem;
+  padding: var(--space-5);
+  border-radius: 1.5rem;
+}
+
+.rocky-homepage .stat-grid strong {
+  display: block;
+  margin-top: var(--space-6);
+  font-size: clamp(1.9rem, 3vw, 2.7rem);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+}
+
+.rocky-homepage .stat-grid span:last-child {
+  display: block;
+  max-width: 16ch;
+  margin-top: var(--space-2);
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.rocky-homepage .panel-section,
+.rocky-homepage .trade-section {
+  padding: var(--space-16) 0;
+}
+
+.rocky-homepage .section-intro {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 50rem;
+}
+
+.rocky-homepage .section-intro h2,
+.rocky-homepage .trade-copy h2 {
+  font-size: clamp(2.2rem, 5vw, 4.4rem);
+}
+
+.rocky-homepage .moat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-5);
+  margin-top: var(--space-10);
+}
+
+.rocky-homepage .moat-card {
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-8);
+  border-radius: 1.5rem;
+  clip-path: polygon(0 0, calc(100% - 1.25rem) 0, 100% 1.25rem, 100% 100%, 0 100%);
+}
+
+.rocky-homepage .moat-card h3,
+.rocky-homepage .trade-copy p,
+.rocky-homepage .moat-card p {
+  margin: 0;
+}
+
+.rocky-homepage .moat-card h3 {
+  font-size: 1.4rem;
+  line-height: 1.1;
+}
+
+.rocky-homepage .moat-card p {
+  color: var(--sand);
+  line-height: 1.65;
+}
+
+.rocky-homepage .trade-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: var(--space-12);
+  align-items: center;
+}
+
+.rocky-homepage .trade-panel__frame {
+  padding: var(--space-5);
+  border-radius: 1.75rem;
+  background:
+    radial-gradient(circle at top, rgba(240, 154, 74, 0.12), transparent 55%),
+    var(--surface-strong);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.rocky-homepage .trade-panel__header,
+.rocky-homepage .trade-panel__ledger {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  align-items: center;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.rocky-homepage .trade-panel__chart {
+  height: clamp(14rem, 34vw, 18rem);
+  margin: var(--space-5) 0;
+  border-radius: 1.2rem;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent),
+    linear-gradient(115deg, rgba(240, 154, 74, 0.4), transparent 34%),
+    linear-gradient(180deg, rgba(8, 8, 8, 0.2), rgba(8, 8, 8, 0.7)),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.05) 0,
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 1px,
+      transparent 18%
+    ),
+    repeating-linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.045) 0,
+      rgba(255, 255, 255, 0.045) 1px,
+      transparent 1px,
+      transparent 22%
+    );
+}
+
+.rocky-homepage .trade-panel__ledger button {
+  padding: 0.75rem 1rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--text);
+  font: inherit;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.rocky-homepage .trade-copy {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.rocky-homepage .trade-copy > p:last-of-type {
+  max-width: 36rem;
+  color: var(--sand);
+  line-height: 1.7;
+}
+
+.rocky-homepage .trade-points {
+  display: grid;
+  gap: var(--space-3);
+  list-style: none;
+  margin: var(--space-2) 0 0;
+  padding: 0;
+}
+
+.rocky-homepage .trade-points li {
+  position: relative;
+  padding-left: 1.35rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.rocky-homepage .trade-points li::before {
+  position: absolute;
+  left: 0;
+  top: 0.45rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 18px rgba(240, 154, 74, 0.35);
+  content: '';
+}
+
+@media (max-width: 1100px) {
+  .rocky-homepage .site-header {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+
+  .rocky-homepage .site-nav {
+    justify-content: flex-start;
+  }
+
+  .rocky-homepage .hero-section,
+  .rocky-homepage .trade-section {
+    grid-template-columns: 1fr;
+  }
+
+  .rocky-homepage .hero-section {
+    min-height: auto;
+  }
+
+  .rocky-homepage .stat-grid {
+    padding: 0 clamp(1rem, 4vw, 2rem) clamp(1rem, 3vw, 1.5rem);
+  }
+}
+
+@media (max-width: 780px) {
+  :root {
+    --content-width: min(100vw - 32px, 1200px);
+  }
+
+  .rocky-homepage .moat-grid,
+  .rocky-homepage .stat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rocky-homepage .hero-copy {
+    padding: 1.25rem 1.25rem 0;
+  }
+
+  .rocky-homepage .hero-copy h1 {
+    font-size: clamp(2.75rem, 17vw, 4.8rem);
+  }
+
+  .rocky-homepage .trade-panel__header,
+  .rocky-homepage .trade-panel__ledger {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

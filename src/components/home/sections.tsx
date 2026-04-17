@@ -1,0 +1,136 @@
+import {
+  heroStats,
+  moatItems,
+  navigationItems,
+  tradePoints,
+} from '@/content/homepage';
+
+export function Header() {
+  return (
+    <header className="site-header">
+      <a className="brand-mark" href="#hero" aria-label="Rocky home">
+        <span className="brand-mark__halo" aria-hidden="true" />
+        <span className="brand-mark__word">ROCKY</span>
+      </a>
+
+      <nav className="site-nav" aria-label="Primary">
+        {navigationItems.map((item) => (
+          <a key={item.label} href={item.href}>
+            {item.label}
+          </a>
+        ))}
+      </nav>
+
+      <div className="header-actions">
+        <a className="ghost-button" href="#why-rocky">
+          Read the thesis
+        </a>
+        <a className="primary-button" href="#trade">
+          Launch App
+        </a>
+      </div>
+    </header>
+  );
+}
+
+export function HeroSection() {
+  return (
+    <section id="hero" className="hero-section">
+      <div className="hero-atmosphere" aria-hidden="true">
+        <div className="hero-horizon" />
+        <div className="hero-monument" />
+        <div className="hero-gridline hero-gridline--left" />
+        <div className="hero-gridline hero-gridline--right" />
+      </div>
+
+      <div className="hero-copy">
+        <p className="eyebrow">Rocky Exchange</p>
+        <h1>PRIVATE POSITIONS. MINING TRADES. ALL IN POCKY.</h1>
+        <p className="hero-summary">
+          Rocky turns a trading venue into a closed-loop system where execution,
+          token issuance, and holding behavior reinforce each other.
+        </p>
+
+        <div className="cta-row">
+          <a className="primary-button" href="#trade">
+            Start Trading
+          </a>
+          <a className="ghost-button" href="#why-rocky">
+            Study the model
+          </a>
+        </div>
+      </div>
+
+      <ul className="stat-grid" aria-label="Platform highlights">
+        {heroStats.map((stat) => (
+          <li key={stat.label}>
+            <span className="stat-kicker">{stat.kicker}</span>
+            <strong>{stat.value}</strong>
+            <span>{stat.label}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+export function MoatsSection() {
+  return (
+    <section id="why-rocky" className="panel-section">
+      <div className="section-intro">
+        <p className="eyebrow">Why Rocky</p>
+        <h2>Three Moats Competitors Structurally Cannot Replicate.</h2>
+      </div>
+
+      <div className="moat-grid">
+        {moatItems.map((item) => (
+          <article key={item.title} className="moat-card">
+            <p className="moat-index">{item.index}</p>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+            <a href={item.href}>{item.note}</a>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export function TradeSection() {
+  return (
+    <section id="trade" className="trade-section">
+      <div className="trade-panel" aria-hidden="true">
+        <div className="trade-panel__frame">
+          <div className="trade-panel__header">
+            <span>BTC / POCKY</span>
+            <span>Mining live</span>
+          </div>
+          <div className="trade-panel__chart" />
+          <div className="trade-panel__ledger">
+            <span>Fee discount unlocked</span>
+            <span>POCKY output 4.8x</span>
+            <button type="button">Buy &amp; Mine</button>
+          </div>
+        </div>
+      </div>
+
+      <div className="trade-copy">
+        <p className="eyebrow">Trade-to-Mine</p>
+        <h2>Every Trade You Make Produces POCKY.</h2>
+        <p>
+          Rocky routes activity back into ownership. Trading creates POCKY,
+          holding changes the economics, and the desk becomes the distribution
+          engine.
+        </p>
+        <ul className="trade-points">
+          {tradePoints.map((point) => (
+            <li key={point}>{point}</li>
+          ))}
+        </ul>
+        <a className="primary-button" href="#hero">
+          Enter Rocky
+        </a>
+      </div>
+    </section>
+  );
+}

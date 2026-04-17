@@ -1,7 +1,5 @@
+import HomePage from '@/components/home/home-page';
+
 export default function Page() {
-  return (
-    <main>
-      <h1>Rocky</h1>
-    </main>
-  );
+  return <HomePage />;
 }

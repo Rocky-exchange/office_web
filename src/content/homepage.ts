@@ -1,6 +1,6 @@
 export const navigationItems = [
   { label: 'Why Rocky', href: '#why-rocky' },
-  { label: 'POCKY', href: '#trade' },
+  { label: 'POCKY', href: '#pocky' },
 ] as const;
 
 export const heroStats = [
@@ -41,6 +41,71 @@ export const tradePoints = [
   'Execution is the mining action, not a separate campaign funnel.',
   'Ownership compounds into better economics for the traders who stay.',
   'The product loop is visible, legible, and brand-native from the first screen.',
+] as const;
+
+export const mechanismSteps = [
+  {
+    title: 'Trade',
+    description:
+      'Spot and derivatives activity starts the loop; execution is the mining action itself.',
+    metric: 'Orders clear',
+  },
+  {
+    title: 'Earn POCKY',
+    description:
+      'Filled flow participates in issuance so platform usage and token distribution stay connected.',
+    metric: 'Rewards accrue',
+  },
+  {
+    title: 'Hold for Benefits',
+    description:
+      'Wallet balance changes the fee surface and deepens the incentive to remain active.',
+    metric: 'Discounts unlock',
+  },
+  {
+    title: 'Re-enter With Edge',
+    description:
+      'The best economics go to returning traders, closing the loop between usage and ownership.',
+    metric: 'Loop compounds',
+  },
+] as const;
+
+export const tokenomicsAllocations = [
+  {
+    share: '50%',
+    label: 'User mining',
+    detail: 'Distribution routed through trading activity.',
+  },
+  {
+    share: '15%',
+    label: 'Treasury',
+    detail: 'Protocol operations, runway, and strategic reserves.',
+  },
+  {
+    share: '15%',
+    label: 'Ecosystem',
+    detail: 'Partnerships, market expansion, and platform growth.',
+  },
+  {
+    share: '10%',
+    label: 'Team vesting',
+    detail: 'Long-duration alignment with the product loop.',
+  },
+  {
+    share: '5%',
+    label: 'Liquidity',
+    detail: 'Market-making support and exchange depth.',
+  },
+  {
+    share: '5%',
+    label: 'Community reserve',
+    detail: 'Programs that keep participation visible and durable.',
+  },
+] as const;
+
+export const footerLinks = [
+  { label: 'Launch App', href: '#hero', variant: 'primary' },
+  { label: 'Read FAQ', href: '#faq', variant: 'ghost' },
 ] as const;
 
 export const faqItems = [

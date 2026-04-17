@@ -1,7 +1,11 @@
 import {
+  faqItems,
+  footerLinks,
   heroStats,
+  mechanismSteps,
   moatItems,
   navigationItems,
+  tokenomicsAllocations,
   tradePoints,
 } from '@/content/homepage';
 
@@ -117,7 +121,7 @@ export function TradeSection() {
       <div className="trade-copy">
         <p className="eyebrow">Trade-to-Mine</p>
         <h2>Every Trade You Make Produces POCKY.</h2>
-        <p>
+        <p className="trade-description">
           Rocky routes activity back into ownership. Trading creates POCKY,
           holding changes the economics, and the desk becomes the distribution
           engine.
@@ -132,5 +136,119 @@ export function TradeSection() {
         </a>
       </div>
     </section>
+  );
+}
+
+export function MechanismSection() {
+  return (
+    <section id="mechanism" className="panel-section mechanism-section">
+      <div className="section-intro">
+        <p className="eyebrow">Mechanism</p>
+        <h2>Trading Is Mining. Holding Is Discount. Loop Closes.</h2>
+        <p className="section-summary">
+          Rocky makes the incentive surface legible. Traders can see where
+          activity becomes POCKY, how holding changes economics, and why the
+          loop favors participants who come back.
+        </p>
+      </div>
+
+      <div className="flow-grid" aria-label="Rocky mechanism flow">
+        {mechanismSteps.map((step, index) => (
+          <article key={step.title} className="flow-card">
+            <p className="moat-index">{String(index + 1).padStart(2, '0')}</p>
+            <h3>{step.title}</h3>
+            <p>{step.description}</p>
+            <span>{step.metric}</span>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export function TokenomicsSection() {
+  return (
+    <section id="pocky" className="tokenomics-section">
+      <div className="section-intro">
+        <p className="eyebrow">Tokenomics</p>
+        <h2>1 Billion POCKY. Fixed Supply. Half To Users.</h2>
+        <p className="section-summary">
+          The supply is fixed from day one. Half of all POCKY is routed to user
+          participation so the platform rewards sustained trading instead of
+          one-off campaigns.
+        </p>
+      </div>
+
+      <div className="tokenomics-layout">
+        <div className="tokenomics-visual" aria-hidden="true">
+          <div className="donut-chart" />
+          <div className="tokenomics-visual__center">
+            <strong>1B</strong>
+            <span>Fixed supply</span>
+          </div>
+        </div>
+
+        <ul className="allocation-list" aria-label="POCKY allocation">
+          {tokenomicsAllocations.map((allocation) => (
+            <li key={allocation.label}>
+              <strong>{allocation.share}</strong>
+              <div>
+                <span>{allocation.label}</span>
+                <p>{allocation.detail}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+export function FaqSection() {
+  return (
+    <section id="faq" className="faq-section">
+      <div className="section-intro">
+        <p className="eyebrow">FAQ</p>
+        <h2>Frequently Asked Questions</h2>
+      </div>
+
+      <div className="faq-list">
+        {faqItems.map((item, index) => (
+          <details key={item.question} open={index === 0}>
+            <summary>{item.question}</summary>
+            <p>{item.answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export function FooterSection() {
+  return (
+    <footer className="footer-section">
+      <div className="footer-copy">
+        <p className="eyebrow">Built for the Loop</p>
+        <h2>SEALED IN CANTON. FORGED IN ROCKY.</h2>
+        <p className="footer-description">
+          Rocky combines cinematic brand identity with a product loop centered
+          on POCKY, fixed tokenomics, and beginner-legible trading mechanics.
+        </p>
+      </div>
+
+      <div className="cta-row">
+        {footerLinks.map((link) => (
+          <a
+            key={link.label}
+            className={
+              link.variant === 'primary' ? 'primary-button' : 'ghost-button'
+            }
+            href={link.href}
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+    </footer>
   );
 }

@@ -13,6 +13,10 @@ const compat = new FlatCompat({
 const eslintConfig = [...compat.extends('next/core-web-vitals', 'next/typescript')];
 
 eslintConfig.push({
+  ignores: ['.next/**', 'next-env.d.ts', 'src/app/globals.css'],
+});
+
+eslintConfig.push({
   rules: {
     '@next/next/no-html-link-for-pages': 'off',
   },

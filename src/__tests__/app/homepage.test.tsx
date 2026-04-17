@@ -1,6 +1,11 @@
 import { render, screen } from '@testing-library/react';
 
 import HomePage from '@/components/home/home-page';
+import {
+  faqItems,
+  mechanismSteps,
+  tokenomicsAllocations,
+} from '@/content/homepage';
 
 describe('homepage', () => {
   test('renders the hero headline and key sections in order', () => {
@@ -16,6 +21,10 @@ describe('homepage', () => {
       'PRIVATE POSITIONS. MINING TRADES. ALL IN POCKY.',
       'Three Moats Competitors Structurally Cannot Replicate.',
       'Every Trade You Make Produces POCKY.',
+      'Trading Is Mining. Holding Is Discount. Loop Closes.',
+      '1 Billion POCKY. Fixed Supply. Half To Users.',
+      'Frequently Asked Questions',
+      'SEALED IN CANTON. FORGED IN ROCKY.',
     ]);
   });
 
@@ -33,7 +42,7 @@ describe('homepage', () => {
       })),
     ).toEqual([
       { text: 'Why Rocky', href: '#why-rocky' },
-      { text: 'POCKY', href: '#trade' },
+      { text: 'POCKY', href: '#pocky' },
     ]);
 
     expect(
@@ -42,5 +51,70 @@ describe('homepage', () => {
     expect(
       screen.getByRole('link', { name: /study the model/i }),
     ).toHaveAttribute('href', '#why-rocky');
+  });
+
+  test('renders mechanism, tokenomics, faq, and footer copy', () => {
+    render(<HomePage />);
+
+    expect(
+      screen.getByRole('heading', {
+        name: /trading is mining\. holding is discount\. loop closes\./i,
+      }),
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByRole('heading', {
+        name: /1 billion pocky\. fixed supply\. half to users\./i,
+      }),
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByRole('heading', {
+        name: /frequently asked questions/i,
+      }),
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByRole('heading', {
+        name: /sealed in canton\. forged in rocky\./i,
+      }),
+    ).toBeInTheDocument();
+
+    mechanismSteps.forEach((step) => {
+      expect(screen.getByRole('heading', { name: step.title })).toBeInTheDocument();
+      expect(screen.getByText(step.description)).toBeInTheDocument();
+      expect(screen.getByText(step.metric)).toBeInTheDocument();
+    });
+
+    tokenomicsAllocations.forEach((allocation) => {
+      expect(screen.getAllByText(allocation.share).length).toBeGreaterThan(0);
+      expect(screen.getByText(allocation.label)).toBeInTheDocument();
+      expect(screen.getByText(allocation.detail)).toBeInTheDocument();
+    });
+  });
+
+  test('renders faq answers and homepage schema as crawlable html', () => {
+    const { container } = render(<HomePage />);
+
+    expect(
+      screen
+        .getAllByRole('link', { name: /^launch app$/i })
+        .some((link) => link.getAttribute('href') === '#hero'),
+    ).toBe(true);
+
+    faqItems.forEach((item) => {
+      expect(screen.getByText(item.question)).toBeInTheDocument();
+      expect(screen.getByText(item.answer)).toBeInTheDocument();
+    });
+
+    const schemaScripts = Array.from(
+      container.querySelectorAll('script[type="application/ld+json"]'),
+    ).map((script) => script.textContent);
+
+    expect(schemaScripts).toHaveLength(2);
+    expect(schemaScripts[0]).toContain('"@type":"Organization"');
+    expect(schemaScripts[1]).toContain('"@type":"FAQPage"');
+    expect(schemaScripts[1]).toContain(faqItems[0].question);
+    expect(schemaScripts[1]).not.toContain('</script>');
   });
 });

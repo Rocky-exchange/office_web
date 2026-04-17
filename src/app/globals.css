@@ -77,7 +77,10 @@ a {
 .rocky-homepage .site-header,
 .rocky-homepage .hero-section,
 .rocky-homepage .panel-section,
-.rocky-homepage .trade-section {
+.rocky-homepage .trade-section,
+.rocky-homepage .tokenomics-section,
+.rocky-homepage .faq-section,
+.rocky-homepage .footer-section {
   width: var(--content-width);
   margin: 0 auto;
 }
@@ -360,7 +363,9 @@ a {
 }
 
 .rocky-homepage .panel-section,
-.rocky-homepage .trade-section {
+.rocky-homepage .trade-section,
+.rocky-homepage .tokenomics-section,
+.rocky-homepage .faq-section {
   padding: var(--space-16) 0;
 }
 
@@ -474,7 +479,7 @@ a {
   gap: var(--space-5);
 }
 
-.rocky-homepage .trade-copy > p:last-of-type {
+.rocky-homepage .trade-description {
   max-width: 36rem;
   color: var(--sand);
   line-height: 1.7;
@@ -507,6 +512,211 @@ a {
   content: '';
 }
 
+.rocky-homepage .section-summary,
+.rocky-homepage .footer-description {
+  margin: 0;
+  max-width: 42rem;
+  color: var(--sand);
+  line-height: 1.7;
+}
+
+.rocky-homepage .mechanism-section {
+  position: relative;
+}
+
+.rocky-homepage .flow-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-5);
+  margin-top: var(--space-10);
+}
+
+.rocky-homepage .flow-card,
+.rocky-homepage .faq-list details,
+.rocky-homepage .footer-section {
+  position: relative;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent),
+    rgba(15, 12, 10, 0.82);
+  backdrop-filter: blur(10px);
+}
+
+.rocky-homepage .flow-card {
+  display: grid;
+  gap: var(--space-4);
+  min-height: 16rem;
+  padding: var(--space-8);
+  border-radius: 1.5rem;
+}
+
+.rocky-homepage .flow-card h3,
+.rocky-homepage .tokenomics-section h2,
+.rocky-homepage .faq-section h2,
+.rocky-homepage .footer-copy h2,
+.rocky-homepage .allocation-list p {
+  margin: 0;
+}
+
+.rocky-homepage .flow-card h3 {
+  font-size: 1.35rem;
+}
+
+.rocky-homepage .flow-card p,
+.rocky-homepage .allocation-list p,
+.rocky-homepage .faq-list p {
+  color: var(--sand);
+  line-height: 1.65;
+}
+
+.rocky-homepage .flow-card span {
+  align-self: end;
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.rocky-homepage .tokenomics-layout {
+  display: grid;
+  grid-template-columns: minmax(18rem, 0.95fr) minmax(0, 1.05fr);
+  gap: var(--space-12);
+  align-items: center;
+  margin-top: var(--space-10);
+}
+
+.rocky-homepage .tokenomics-visual {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 25rem;
+  border: 1px solid var(--line);
+  border-radius: 2rem;
+  background:
+    radial-gradient(circle at top, rgba(240, 154, 74, 0.12), transparent 55%),
+    var(--surface-strong);
+}
+
+.rocky-homepage .donut-chart {
+  width: min(22rem, 72vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at center, #120f0d 0 30%, transparent 31%),
+    conic-gradient(
+      #ffd09f 0 50%,
+      #8e6542 50% 65%,
+      #5a4332 65% 80%,
+      #332821 80% 90%,
+      #a57444 90% 95%,
+      #d7b487 95% 100%
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 28px 80px rgba(0, 0, 0, 0.38);
+}
+
+.rocky-homepage .tokenomics-visual__center {
+  position: absolute;
+  display: grid;
+  gap: var(--space-2);
+  text-align: center;
+}
+
+.rocky-homepage .tokenomics-visual__center strong {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  letter-spacing: -0.06em;
+}
+
+.rocky-homepage .tokenomics-visual__center span {
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.8rem;
+}
+
+.rocky-homepage .allocation-list,
+.rocky-homepage .faq-list {
+  display: grid;
+  gap: var(--space-4);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.rocky-homepage .allocation-list li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-4);
+  align-items: start;
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--line);
+}
+
+.rocky-homepage .allocation-list li:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.rocky-homepage .allocation-list strong {
+  min-width: 3.5rem;
+  color: var(--accent);
+  font-size: 1.35rem;
+  letter-spacing: -0.04em;
+}
+
+.rocky-homepage .allocation-list span {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-weight: 600;
+}
+
+.rocky-homepage .faq-list {
+  margin-top: var(--space-10);
+}
+
+.rocky-homepage .faq-list details {
+  border-radius: 1.4rem;
+  padding: var(--space-6);
+}
+
+.rocky-homepage .faq-list summary {
+  cursor: pointer;
+  font-size: 1.05rem;
+  font-weight: 600;
+  list-style: none;
+}
+
+.rocky-homepage .faq-list summary::-webkit-details-marker {
+  display: none;
+}
+
+.rocky-homepage .faq-list p {
+  margin: var(--space-4) 0 0;
+}
+
+.rocky-homepage .footer-section {
+  margin: 0 auto var(--space-16);
+  padding: var(--space-12);
+  border-radius: 2rem;
+  background:
+    linear-gradient(180deg, rgba(50, 57, 53, 0.92), rgba(19, 15, 13, 0.96)),
+    var(--surface-strong);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.28);
+}
+
+.rocky-homepage .footer-copy {
+  display: grid;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.rocky-homepage .footer-copy h2 {
+  font-size: clamp(2.3rem, 5vw, 4.8rem);
+  line-height: 0.96;
+}
+
 @media (max-width: 1100px) {
   .rocky-homepage .site-header {
     grid-template-columns: 1fr;
@@ -526,8 +736,16 @@ a {
     min-height: auto;
   }
 
-  .rocky-homepage .stat-grid {
+  .rocky-homepage .stat-grid,
+  .rocky-homepage .flow-grid,
+  .rocky-homepage .tokenomics-layout {
     padding: 0 clamp(1rem, 4vw, 2rem) clamp(1rem, 3vw, 1.5rem);
+  }
+
+  .rocky-homepage .flow-grid,
+  .rocky-homepage .tokenomics-layout {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 0;
   }
 }
 
@@ -537,7 +755,9 @@ a {
   }
 
   .rocky-homepage .moat-grid,
-  .rocky-homepage .stat-grid {
+  .rocky-homepage .stat-grid,
+  .rocky-homepage .flow-grid,
+  .rocky-homepage .tokenomics-layout {
     grid-template-columns: 1fr;
   }
 
@@ -553,5 +773,10 @@ a {
   .rocky-homepage .trade-panel__ledger {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .rocky-homepage .footer-section {
+    padding: var(--space-8);
+    margin-bottom: var(--space-12);
   }
 }

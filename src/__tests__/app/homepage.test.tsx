@@ -6,6 +6,9 @@ import {
   mechanismSteps,
   tokenomicsAllocations,
 } from '@/content/homepage';
+import { homepageUrl, siteMetadata, sitemapUrl } from '@/lib/metadata';
+import robots from '@/app/robots';
+import sitemap from '@/app/sitemap';
 
 describe('homepage', () => {
   test('renders the hero headline and key sections in order', () => {
@@ -116,5 +119,34 @@ describe('homepage', () => {
     expect(schemaScripts[1]).toContain('"@type":"FAQPage"');
     expect(schemaScripts[1]).toContain(faqItems[0].question);
     expect(schemaScripts[1]).not.toContain('</script>');
+  });
+
+  test('exports crawlable seo metadata for robots and sitemap', async () => {
+    expect(siteMetadata.alternates?.canonical).toBe(homepageUrl);
+    expect(siteMetadata.robots).toEqual({
+      index: true,
+      follow: true,
+    });
+    expect(siteMetadata.openGraph?.url).toBe(homepageUrl);
+    expect(siteMetadata.openGraph?.siteName).toBe('Rocky');
+
+    const robotsMetadata = await robots();
+    expect(robotsMetadata).toEqual({
+      rules: [{ userAgent: '*', allow: '/' }],
+      sitemap: sitemapUrl,
+    });
+    expect(`Sitemap: ${robotsMetadata.sitemap}`).toBe(
+      'Sitemap: https://rocky.exchange/sitemap.xml',
+    );
+
+    const sitemapMetadata = await sitemap();
+    expect(sitemapMetadata).toEqual([
+      {
+        url: homepageUrl,
+      },
+    ]);
+    expect(sitemapMetadata.map((entry) => entry.url).join('\n')).toBe(
+      'https://rocky.exchange/',
+    );
   });
 });

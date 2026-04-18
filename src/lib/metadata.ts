@@ -6,6 +6,17 @@ export const sitemapUrl = `${siteUrl}/sitemap.xml`;
 
 export const siteMetadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  icons: {
+    icon: [
+      {
+        url: '/favicon-32x32.png',
+        sizes: '32x32',
+        type: 'image/png',
+      },
+    ],
+    shortcut: '/favicon-32x32.png',
+    apple: '/favicon-32x32.png',
+  },
   alternates: {
     canonical: homepageUrl,
   },

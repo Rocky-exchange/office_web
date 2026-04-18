@@ -32,9 +32,9 @@ export const moatItems = [
   },
   {
     icon: '/pillars/speed.svg',
-    title: 'CEX Speed + DEX Safety',
+    title: 'Trade is Mining',
     description:
-      "Your collateral locks into Canton's native LockedAmulet. Not a smart contract that can be exploited. The protocol itself enforces withdrawal rules.",
+      "Canton’s unique reward system distributes network incentives based on real activites. Rocky brings this directly into trading, users can capture instant CC rewards with every trade. ",
     result:
       'HyperLiquid-class latency, provable settlement.',
   },
@@ -120,7 +120,7 @@ export const tokenomicsAllocations = [
 ] as const;
 
 export const footerCtaLinks = [
-  { label: 'Launch App', href: '#hero', variant: 'primary' },
+  { label: 'Launch App', href: 'https://app.rocky.exchange', variant: 'primary' },
   { label: 'Whitepaper', href: '#faq', variant: 'ghost' },
 ] as const;
 

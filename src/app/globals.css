@@ -21,7 +21,7 @@
   --space-16: 4rem;
   --space-20: 5rem;
   --space-24: 6rem;
-  --header-height: 5.5rem;
+  --header-height: 72px;
   --content-width: min(1200px, calc(100vw - 48px));
 }
 
@@ -94,16 +94,19 @@ a {
 }
 
 .rocky-homepage .site-header {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   z-index: 2;
   display: grid;
   grid-template-columns: auto 1fr auto;
   gap: var(--space-8);
   align-items: center;
-  min-height: var(--header-height);
+  height: var(--header-height);
   width: 100%;
-  padding: 1.82rem 3.7rem 1.56rem;
-  border-bottom: 1px solid rgba(255, 244, 227, 0.28);
+  padding: 0 3.7rem;
+  border-bottom: 1px solid rgba(255, 244, 227, 0.2);
+  background: transparent;
 }
 
 .rocky-homepage .brand-mark {
@@ -136,10 +139,12 @@ a {
 .rocky-homepage .site-nav a,
 .rocky-homepage .moat-card a {
   color: #f4efe6;
-  font-family: 'Rinter', 'Orbitron', 'Rajdhani', sans-serif;
-  font-size: 1rem;
+  font-family: var(--font-aldrich), sans-serif;
+  font-size: 12px;
   font-weight: 400;
-  letter-spacing: 0.09em;
+  font-style: normal;
+  line-height: 16.88px;
+  letter-spacing: 1.13px;
   text-transform: uppercase;
   text-decoration: none;
 }
@@ -254,9 +259,8 @@ a {
   grid-template-columns: minmax(0, 1fr);
   align-items: stretch;
   width: 100%;
-  min-height: calc(100svh - var(--header-height));
+  min-height: calc(100svh - var(--header-height) + 3.25rem);
   padding: 0;
-  border-bottom: 1px solid rgba(255, 244, 227, 0.22);
 }
 
 .rocky-homepage .hero-atmosphere {
@@ -265,17 +269,17 @@ a {
   overflow: hidden;
 }
 
-.rocky-homepage .hero-image,
+.rocky-homepage .hero-video,
 .rocky-homepage .hero-video-overlay {
   position: absolute;
   inset: 0;
 }
 
-.rocky-homepage .hero-image {
-  background-image: url('/hero-poster.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 34% center;
+.rocky-homepage .hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 34% 49%;
   transform: scale(1.01);
 }
 
@@ -295,9 +299,9 @@ a {
 .rocky-homepage .hero-copy {
   align-self: center;
   justify-self: end;
-  width: 38rem;
+  width: 41rem;
   max-width: calc(100vw - 5rem);
-  margin: 23.15rem 1.85rem 3.15rem auto;
+  margin: 17.8rem 3.15rem 4.5rem auto;
   padding: 0;
 }
 
@@ -322,7 +326,7 @@ a {
 }
 
 .rocky-homepage .hero-copy h1 {
-  width: 576px;
+  width: 620px;
   max-width: 100%;
   font-family: 'Rinter', 'Orbitron', 'Rajdhani', sans-serif;
   font-size: 56px;
@@ -337,9 +341,9 @@ a {
 }
 
 .rocky-homepage .hero-summary {
-  width: 576px;
+  width: 620px;
   max-width: 100%;
-  margin: 1.78rem 0 0;
+  margin: 1.2rem 0 0;
   color: rgba(255, 255, 255, 0.8);
   font-family: Inter, sans-serif;
   font-size: 14px;
@@ -349,9 +353,9 @@ a {
 }
 
 .rocky-homepage .cta-row {
-  width: 416px;
+  width: 548px;
   max-width: 100%;
-  margin-top: 2.72rem;
+  margin-top: 2.15rem;
   gap: 12px;
   flex-wrap: nowrap;
 }
@@ -373,14 +377,14 @@ a {
 }
 
 .rocky-homepage .hero-copy .primary-button {
-  width: 202px;
+  width: 248px;
   background: linear-gradient(90deg, #f5a85f 0%, #b0d6ea 100%);
   box-shadow: none;
   color: #11100d;
 }
 
 .rocky-homepage .hero-copy .ghost-button {
-  width: 202px;
+  width: 288px;
   border-color: rgba(255, 255, 255, 0.26);
   background: transparent;
   color: rgba(255, 255, 255, 0.88);
@@ -391,7 +395,7 @@ a {
   width: 100%;
   align-self: end;
   min-height: 174.88px;
-  padding: 56px 108px;
+  padding: 50px 108px 46px;
   border-top: 1px solid rgba(255, 255, 255, 0.3);
   border-right: 0;
   border-bottom: 0;
@@ -595,10 +599,12 @@ a {
 
 .rocky-homepage .moat-card {
   display: grid;
+  grid-template-rows: auto auto 1fr auto auto;
+  align-content: start;
   gap: 0;
   width: 386px;
-  height: 380px;
-  padding: 88px 58px 42px 78px;
+  height: 408px;
+  padding: 60px 48px 34px 68px;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.015), transparent 18%),
     rgba(14, 10, 9, 0.34);
@@ -643,11 +649,11 @@ a {
 .rocky-homepage .moat-card__icon {
   width: 28px;
   height: 28px;
-  margin-bottom: 32px;
+  margin-bottom: 30px;
 }
 
 .rocky-homepage .moat-card h3 {
-  max-width: 250px;
+  max-width: 272px;
   font-family: var(--font-aldrich), sans-serif;
   font-size: 18px;
   font-weight: 400;
@@ -655,35 +661,41 @@ a {
   letter-spacing: 0;
   text-transform: capitalize;
   color: #f4efe6;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 
 .rocky-homepage .moat-card p {
-  max-width: 250px;
+  max-width: 272px;
   color: rgba(244, 239, 230, 0.56);
   font-family: var(--font-inter), sans-serif;
   font-size: 14px;
   font-weight: 400;
-  line-height: 16.88px;
+  line-height: 1.36;
   letter-spacing: 0;
 }
 
-.rocky-homepage .moat-card__divider {
+.rocky-homepage .moat-card__container {
+  width: 100%;
+  height: 100px;
+  padding: 2rem 0;
+  border-top: 1px solid rgba(255, 244, 227, 0.15);
+}
+
+/* .rocky-homepage .moat-card__divider {
   align-self: end;
   width: 100%;
   height: 1px;
-  margin-top: auto;
-  margin-bottom: 20px;
+  margin: 0 0 1.5rem 0;
   background: rgba(255, 244, 227, 0.15);
-}
+} */
 
 .rocky-homepage .moat-card__result {
-  max-width: 250px;
+  max-width: 290px;
   color: rgba(244, 239, 230, 0.58);
   font-family: var(--font-inter), sans-serif;
   font-size: 14px;
   font-weight: 400;
-  line-height: 16.88px;
+  line-height: 1.34;
   letter-spacing: 0;
 }
 
@@ -692,35 +704,63 @@ a {
   font-family: var(--font-inter), sans-serif;
   font-size: 14px;
   font-weight: 400;
-  line-height: 16.88px;
+  line-height: 1.34;
   letter-spacing: 0;
 }
 
 .rocky-homepage .trade-section {
   display: grid;
-  grid-template-columns: minmax(0, 37.5rem) minmax(0, 38rem);
+  grid-template-columns: minmax(0, 40rem) minmax(0, 39rem);
   justify-content: center;
-  gap: 2.75rem;
-  align-items: center;
-  width: min(1340px, calc(100vw - 96px));
-  padding-top: 8.25rem;
-  padding-bottom: 8.25rem;
+  gap: 4.15rem;
+  align-items: start;
+  width: min(1420px, calc(100vw - 120px));
+  padding-top: 7.4rem;
+  padding-bottom: 7.1rem;
 }
 
 .rocky-homepage .trade-panel {
   position: relative;
-  min-height: 39rem;
+  min-height: 42rem;
 }
 
-.rocky-homepage .trade-panel__rocks {
+.rocky-homepage .trade-panel__rock-wrap {
   position: absolute;
-  inset: 0 0 auto 0;
-  height: 13rem;
   pointer-events: none;
+}
+
+.rocky-homepage .trade-panel__rock-wrap--small {
+  top: 1.35rem;
+  left: 16.7rem;
+  width: 7.5rem;
+  height: 9.2rem;
+  z-index: 1;
+}
+
+.rocky-homepage .trade-panel__rock-wrap--large {
+  top: -1.65rem;
+  left: 28.5rem;
+  width: 14.6rem;
+  height: 17.4rem;
+  z-index: 3;
+}
+
+.rocky-homepage .trade-panel__rock-shadow {
+  position: absolute;
+  left: 1.65rem;
+  bottom: 0.4rem;
+  width: 3.85rem;
+  height: 1.45rem;
+  border-radius: 999px;
+  background: rgba(229, 217, 201, 0.34);
+  filter: blur(15px);
+  opacity: 0.56;
 }
 
 .rocky-homepage .trade-panel__rock {
   position: absolute;
+  overflow: hidden;
+  isolation: isolate;
   background:
     linear-gradient(155deg, rgba(247, 214, 163, 0.9) 0%, rgba(214, 155, 86, 0.88) 18%, rgba(102, 90, 80, 0.18) 22%, rgba(126, 118, 111, 0.84) 48%, rgba(74, 65, 58, 0.96) 100%),
     radial-gradient(circle at 48% 50%, rgba(255, 233, 188, 0.92) 0%, rgba(250, 201, 118, 0.82) 28%, transparent 30%);
@@ -738,63 +778,118 @@ a {
   content: '';
 }
 
+.rocky-homepage .trade-panel__rock::after {
+  position: absolute;
+  inset: 22% 24%;
+  background: url('/brand/footer-logo.svg') center / contain no-repeat;
+  filter:
+    drop-shadow(0 0 10px rgba(245, 168, 95, 0.42))
+    drop-shadow(0 0 22px rgba(245, 168, 95, 0.24));
+  opacity: 0.95;
+  content: '';
+}
+
 .rocky-homepage .trade-panel__rock--small {
-  top: 1.8rem;
-  left: 15.5rem;
-  width: 7.4rem;
-  height: 8.4rem;
-  clip-path: polygon(34% 0%, 82% 16%, 100% 55%, 72% 100%, 22% 88%, 0% 40%);
-  transform: rotate(-16deg);
-  filter: blur(0.3px) drop-shadow(0 20px 30px rgba(0, 0, 0, 0.3));
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  /* clip-path: polygon(34% 2%, 71% 2%, 88% 18%, 96% 53%, 76% 93%, 33% 96%, 10% 62%, 12% 26%); */
+  transform: rotate(16.99deg);
+  filter: none;
+  opacity: 0.7;
+  top: 80px;
+  z-index: 0;
 }
 
 .rocky-homepage .trade-panel__rock--large {
-  top: 0;
-  left: 26rem;
-  width: 12rem;
-  height: 15.2rem;
-  clip-path: polygon(28% 0%, 78% 8%, 100% 44%, 82% 100%, 28% 94%, 0% 30%);
-  transform: rotate(7deg);
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  /* clip-path: polygon(26% 0%, 76% 3%, 97% 30%, 95% 58%, 74% 100%, 30% 92%, 8% 44%); */
+  transform: rotate(-13.88deg);
+  filter: none;
+  top: 10px;
+  z-index: 3;
+}
+
+.rocky-homepage .trade-panel__rock--small::after {
+  content: none;
+}
+
+.rocky-homepage .trade-panel__rock--small::before {
+  content: none;
+}
+
+.rocky-homepage .trade-panel__rock--large::after {
+  content: none;
+}
+
+.rocky-homepage .trade-panel__rock--large::before {
+  content: none;
+}
+
+.rocky-homepage .trade-panel__rock-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  mix-blend-mode: screen;
+  filter:
+    brightness(1.08)
+    contrast(1.1)
+    saturate(1.04)
+    drop-shadow(0 18px 28px rgba(0, 0, 0, 0.24));
 }
 
 .rocky-homepage .trade-panel__frame {
   position: relative;
+  z-index: 2;
   width: 100%;
   max-width: 100%;
-  margin-top: 10.4rem;
-  padding: 5.2rem 4.2rem 3.4rem;
-  border: 1px solid rgba(216, 171, 98, 0.42);
-  border-radius: 2rem;
+  margin-top: 11.55rem;
+  padding: 3.35rem 3.7rem 3.15rem;
+  border: 1px solid transparent;
+  border-image-source: linear-gradient(
+    36.8deg,
+    rgba(215, 179, 114, 0.5) 22.09%,
+    rgba(215, 179, 114, 0) 82.9%
+  );
+  border-image-slice: 1;
+  border-radius: 2.15rem;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent 32%),
-    rgba(28, 20, 14, 0.72);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 34%),
+    rgba(27, 19, 14, 0.76);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    0 18px 50px rgba(0, 0, 0, 0.18);
+    0 18px 50px rgba(0, 0, 0, 0.14);
 }
 
 .rocky-homepage .trade-panel__rows {
   display: grid;
-  gap: 1.2rem;
+  gap: 1rem;
 }
 
 .rocky-homepage .trade-panel__row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 3.55rem;
-  padding: 0 1.08rem;
-  border-radius: 0.95rem;
+  min-height: 3.5rem;
+  padding: 0 1.12rem;
+  border-radius: 0.78rem;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01)),
-    rgba(49, 39, 33, 0.72);
+    rgba(49, 39, 33, 0.62);
 }
 
 .rocky-homepage .trade-panel__row span,
 .rocky-homepage .trade-panel__summary span {
-  color: rgba(244, 239, 230, 0.6);
+  color: rgba(244, 239, 230, 0.54);
   font-family: var(--font-inter), sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 400;
   line-height: 1.4;
 }
@@ -803,7 +898,7 @@ a {
 .rocky-homepage .trade-panel__summary strong {
   color: #f4efe6;
   font-family: 'Rinter', 'Orbitron', 'Rajdhani', sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 1.2;
   letter-spacing: 0;
@@ -824,7 +919,7 @@ a {
 .rocky-homepage .trade-panel__divider {
   width: 100%;
   height: 1px;
-  margin: 2rem 0 1.6rem;
+  margin: 1.95rem 0 1.55rem;
   background: repeating-linear-gradient(
     90deg,
     rgba(255, 244, 227, 0.12) 0,
@@ -838,6 +933,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  min-height: 2.1rem;
 }
 
 .rocky-homepage .trade-panel__summary strong {
@@ -846,14 +942,14 @@ a {
 
 .rocky-homepage .trade-panel__action {
   width: 100%;
-  height: 4.1rem;
-  margin-top: 2.3rem;
+  height: 4rem;
+  margin-top: 2.05rem;
   border: 0;
-  border-radius: 0.85rem;
-  background: #dfbb73;
+  border-radius: 0.72rem;
+  background: #e0bd76;
   color: #11100d;
   font-family: var(--font-inter), sans-serif;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 700;
   line-height: 1;
   letter-spacing: 0;
@@ -861,68 +957,88 @@ a {
 
 .rocky-homepage .trade-copy {
   display: grid;
-  gap: 1.6rem;
-  align-self: center;
+  gap: 1.25rem;
+  align-self: start;
+  padding-top: 4.8rem;
+  width: 100%;
 }
 
 .rocky-homepage .trade-section .eyebrow {
-  color: #f5ab61;
+  display: inline-block;
+  justify-self: start;
+  background-image: linear-gradient(90deg, #f5a85f 0%, #b0d6ea 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
   font-family: var(--font-aldrich), sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.2;
   letter-spacing: 0;
+  text-transform: uppercase;
 }
 
 .rocky-homepage .trade-section .trade-copy h2 {
-  max-width: 100%;
+  max-width: 46rem;
+  display: grid;
   font-family: 'Rinter', 'Orbitron', 'Rajdhani', sans-serif;
-  font-size: 54px;
+  font-size: 57px;
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.1;
   letter-spacing: 0;
   text-transform: none;
-  text-wrap: unset;
+  text-wrap: pretty;
   background: linear-gradient(90deg, #f5a85f 0%, #b0d6ea 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
+.rocky-homepage .trade-copy__headline-line {
+  display: block;
+  white-space: nowrap;
+}
+
 .rocky-homepage .trade-description {
-  max-width: 38rem;
+  max-width: 39rem;
   margin: 0;
-  color: rgba(244, 239, 230, 0.62);
+  color: rgba(244, 239, 230, 0.56);
   font-family: var(--font-inter), sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 400;
-  line-height: 1.45;
+  line-height: 1.42;
 }
 
 .rocky-homepage .trade-points {
   display: grid;
-  gap: 1.7rem;
+  gap: 1.55rem;
   list-style: none;
-  margin: 2.1rem 0 0;
+  margin: 2.25rem 0 0;
   padding: 0;
 }
 
 .rocky-homepage .trade-points li {
   display: grid;
-  grid-template-columns: 1.35rem minmax(0, 1fr);
-  gap: 0.9rem;
+  grid-template-columns: 18px minmax(0, 1fr);
+  gap: 0.78rem;
   align-items: start;
-  color: rgba(244, 239, 230, 0.72);
+  color: rgba(244, 239, 230, 0.7);
   font-family: var(--font-inter), sans-serif;
   font-size: 14px;
   font-weight: 400;
-  line-height: 1.45;
+  line-height: 1.42;
 }
 
 .rocky-homepage .trade-points__spark {
-  color: #dfbb73;
-  font-size: 1.15rem;
-  line-height: 1;
+  display: block;
+  width: 18px;
+  height: 20px;
+  min-width: 18px;
+  min-height: 20px;
+  flex: 0 0 18px;
+  object-fit: contain;
+  transform: translateY(0.08rem);
 }
 
 .rocky-homepage .trade-points strong {
@@ -931,19 +1047,26 @@ a {
 }
 
 .rocky-homepage .trade-copy__cta {
-  min-height: 0;
-  width: fit-content;
-  margin-top: 2.3rem;
-  padding: 1.18rem 2rem;
+  width: 160px;
+  min-width: 160px;
+  min-height: 44px;
+  height: 44px;
+  margin-top: 2.35rem;
+  padding: 0 1.4rem;
   border-radius: 0;
   background: linear-gradient(90deg, #f5a85f 0%, #b0d6ea 100%);
   box-shadow: none;
   color: #11100d;
-  font-family: 'Rinter', 'Orbitron', 'Rajdhani', sans-serif;
-  font-size: 18px;
+  font-family: var(--font-aldrich), sans-serif;
+  font-size: 14px;
   font-weight: 400;
-  letter-spacing: 0.08em;
-  gap: 0.9rem;
+  font-style: normal;
+  line-height: 22.5px;
+  letter-spacing: 1px;
+  text-align: center;
+  vertical-align: middle;
+  text-transform: uppercase;
+  gap: 0.6rem;
 }
 
 .rocky-homepage .section-summary,
@@ -1430,26 +1553,26 @@ a {
   overflow: hidden;
 }
 
-.rocky-homepage .footer-image,
+.rocky-homepage .footer-video,
 .rocky-homepage .footer-video-overlay {
   position: absolute;
   inset: 0;
 }
 
-.rocky-homepage .footer-image {
-  background-image: url('/hero-poster.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center bottom;
-  transform: scale(1.08);
-  filter: saturate(0.72) brightness(0.62);
+.rocky-homepage .footer-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 61%;
+  transform: scale(0.94);
+  filter: saturate(0.74) brightness(0.66);
 }
 
 .rocky-homepage .footer-video-overlay {
   background:
-    linear-gradient(180deg, rgba(62, 74, 74, 0.82) 0%, rgba(61, 72, 71, 0.8) 20%, rgba(34, 32, 28, 0.2) 48%, rgba(30, 22, 17, 0.62) 72%, rgba(14, 10, 8, 0.98) 100%),
+    linear-gradient(180deg, rgba(28, 21, 17, 0.78) 0%, rgba(48, 40, 33, 0.5) 18%, rgba(34, 32, 28, 0.14) 42%, rgba(30, 22, 17, 0.56) 70%, rgba(14, 10, 8, 0.98) 100%),
     linear-gradient(90deg, rgba(13, 13, 11, 0.28) 0%, rgba(13, 13, 11, 0.12) 22%, rgba(13, 13, 11, 0.03) 46%, rgba(13, 13, 11, 0.22) 100%),
-    radial-gradient(circle at 50% 44%, rgba(255, 216, 168, 0.26) 0%, rgba(255, 216, 168, 0.08) 18%, rgba(255, 216, 168, 0) 42%);
+    radial-gradient(circle at 50% 42%, rgba(255, 216, 168, 0.18) 0%, rgba(255, 216, 168, 0.06) 18%, rgba(255, 216, 168, 0) 42%);
   pointer-events: none;
 }
 
@@ -1851,16 +1974,25 @@ a {
     padding: 4rem 1.25rem 1.5rem;
   }
 
-  .rocky-homepage .trade-panel__rock--small {
+  .rocky-homepage .trade-panel__rock-wrap--small {
+    top: 2.4rem;
     left: 7rem;
     width: 5.5rem;
-    height: 6rem;
+    height: 6.8rem;
   }
 
-  .rocky-homepage .trade-panel__rock--large {
+  .rocky-homepage .trade-panel__rock-wrap--large {
     left: 11.5rem;
     width: 8.75rem;
     height: 11rem;
+  }
+
+  .rocky-homepage .trade-panel__rock-shadow {
+    left: 1.2rem;
+    bottom: 0.2rem;
+    width: 2.8rem;
+    height: 1rem;
+    filter: blur(12px);
   }
 
   .rocky-homepage .trade-panel__row,

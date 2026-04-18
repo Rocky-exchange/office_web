@@ -43,10 +43,20 @@ export function Header() {
       </nav>
 
       <div className="header-actions">
-        <a className="ghost-button ghost-button--header" href="#why-rocky">
+        <a
+          className="ghost-button ghost-button--header"
+          href="https://demo.rocky.exchange"
+          target="_blank"
+          rel="noreferrer"
+        >
           View Demo
         </a>
-        <a className="primary-button primary-button--header" href="#trade">
+        <a
+          className="primary-button primary-button--header"
+          href="https://app.rocky.exchange"
+          target="_blank"
+          rel="noreferrer"
+        >
           Launch App
         </a>
       </div>
@@ -58,7 +68,15 @@ export function HeroSection() {
   return (
     <section id="hero" className="hero-section">
       <div className="hero-atmosphere" aria-hidden="true">
-        <div className="hero-image" />
+        <video
+          className="hero-video"
+          src="/hero-background.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+        />
         <div className="hero-video-overlay" />
       </div>
 
@@ -73,7 +91,12 @@ export function HeroSection() {
         </p>
 
         <div className="cta-row">
-          <a className="primary-button" href="#trade">
+          <a
+            className="primary-button"
+            href="https://app.rocky.exchange"
+            target="_blank"
+            rel="noreferrer"
+          >
             LAUNCH APP <span aria-hidden="true">→</span>
           </a>
           <a className="ghost-button" href="#why-rocky">
@@ -119,10 +142,11 @@ export function MoatsSection() {
             />
             <h3>{item.title}</h3>
             <p>{item.description}</p>
-            <div className="moat-card__divider" aria-hidden="true" />
+            <div className='moat-card__container'>
             <p className="moat-card__result">
               Result: <span>{item.result}</span>
             </p>
+            </div>
           </article>
         ))}
       </div>
@@ -134,9 +158,19 @@ export function TradeSection() {
   return (
     <section id="trade" className="trade-section">
       <div className="trade-panel" aria-hidden="true">
-        <div className="trade-panel__rocks">
-          <div className="trade-panel__rock trade-panel__rock--small" />
-          <div className="trade-panel__rock trade-panel__rock--large" />
+        <div className="trade-panel__rock-wrap trade-panel__rock-wrap--small">
+          <div className="trade-panel__rock-shadow" />
+          <div className="trade-panel__rock trade-panel__rock--small">
+            <video
+              className="trade-panel__rock-video"
+              src="/trade-token.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+            />
+          </div>
         </div>
         <div className="trade-panel__frame">
           <div className="trade-panel__rows">
@@ -162,11 +196,27 @@ export function TradeSection() {
             BUY 0.148 BTC
           </button>
         </div>
+        <div className="trade-panel__rock-wrap trade-panel__rock-wrap--large">
+          <div className="trade-panel__rock trade-panel__rock--large">
+            <video
+              className="trade-panel__rock-video"
+              src="/trade-token.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+            />
+          </div>
+        </div>
       </div>
 
       <div className="trade-copy">
-        <p className="eyebrow">Trading</p>
-        <h2>Every Trade You Make Produces ROCKY.</h2>
+        <p className="eyebrow">[ TRADING ]</p>
+        <h2>
+          <span className="trade-copy__headline-line">Every Trade You Make</span>
+          <span className="trade-copy__headline-line">Produces ROCKY.</span>
+        </h2>
         <p className="trade-description">
           Unlike most DEXs, where fees simply disappear, Rocky gives them back
           to you.
@@ -178,9 +228,14 @@ export function TradeSection() {
         <ul className="trade-points">
           {tradePoints.map((point) => (
             <li key={`${point.prefix}-${point.highlight}`}>
-              <span className="trade-points__spark" aria-hidden="true">
-                ✦
-              </span>
+              <Image
+                className="trade-points__spark"
+                src="/brand/star.svg"
+                alt=""
+                width={18}
+                height={20}
+                aria-hidden="true"
+              />
               <span>
                 {point.prefix}
                 <strong>{point.highlight}</strong>
@@ -310,8 +365,16 @@ export function FooterSection() {
   return (
     <footer id="footer" className="footer-section">
       <div className="footer-atmosphere" aria-hidden="true">
-        <div className="footer-image" />
-        {/* <div className="footer-video-overlay" /> */}
+        <video
+          className="footer-video"
+          src="/footer-background.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+        />
+        <div className="footer-video-overlay" />
       </div>
 
       <div className="footer-shell">
@@ -344,6 +407,8 @@ export function FooterSection() {
                     : 'ghost-button ghost-button--footer'
                 }`}
                 href={link.href}
+                target={link.href.startsWith('http') ? '_blank' : undefined}
+                rel={link.href.startsWith('http') ? 'noreferrer' : undefined}
               >
                 {link.label}
               </a>

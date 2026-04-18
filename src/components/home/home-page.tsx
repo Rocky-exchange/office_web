@@ -1,6 +1,5 @@
 import {
   FooterSection,
-  FaqSection,
   Header,
   HeroSection,
   MechanismSection,
@@ -8,6 +7,7 @@ import {
   TokenomicsSection,
   TradeSection,
 } from '@/components/home/sections';
+import { FaqSection } from '@/components/home/faq-section';
 import { faqItems } from '@/content/homepage';
 import { buildFaqSchema, buildOrganizationSchema } from '@/lib/schema';
 
@@ -32,8 +32,10 @@ export default function HomePage() {
       <MoatsSection />
       <TradeSection />
       <MechanismSection />
-      <TokenomicsSection />
-      <FaqSection />
+      <div className="tokenomics-faq-shell">
+        <TokenomicsSection />
+        <FaqSection />
+      </div>
       <FooterSection />
     </main>
   );

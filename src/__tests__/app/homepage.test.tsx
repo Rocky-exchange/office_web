@@ -21,11 +21,11 @@ describe('homepage', () => {
     const labels = headings.map((heading) => heading.textContent);
 
     expect(labels).toEqual([
-      'PRIVATE POSITIONS. MINING TRADES. ALL IN POCKY.',
-      'Three Moats Competitors Structurally Cannot Replicate.',
-      'Every Trade You Make Produces POCKY.',
-      'Trading Is Mining. Holding Is Discount. Loop Closes.',
-      '1 Billion POCKY. Fixed Supply. Half To Users.',
+      'CANTON ENCRYPTS. ROCKY EARNS.',
+      'Why Rocky Is Hard To Replicate',
+      'Every Trade You Make Produces ROCKY.',
+      'Trading is Mining.Holding is Discount.Loop Closes.',
+      '1 Billion ROCKY.Fixed Supply. Half to Users.',
       'Frequently Asked Questions',
       'SEALED IN CANTON. FORGED IN ROCKY.',
     ]);
@@ -37,39 +37,57 @@ describe('homepage', () => {
     const nav = screen.getByRole('navigation', { name: /primary/i });
     const navLinks = screen.getAllByRole('link').filter((link) => nav.contains(link));
 
-    expect(navLinks).toHaveLength(2);
+    expect(navLinks).toHaveLength(5);
     expect(
       navLinks.map((link) => ({
         text: link.textContent,
         href: link.getAttribute('href'),
       })),
     ).toEqual([
-      { text: 'Why Rocky', href: '#why-rocky' },
-      { text: 'POCKY', href: '#pocky' },
+      { text: 'How It Works', href: '#mechanism' },
+      { text: 'Trading Is Mining', href: '#trade' },
+      { text: 'Tokenomic', href: '#pocky' },
+      { text: 'FAQ', href: '#faq' },
+      { text: 'Docs', href: '#footer' },
     ]);
 
     expect(
-      screen.getByRole('link', { name: /start trading/i }),
+      screen.getAllByRole('link', { name: /launch app/i })[0],
     ).toHaveAttribute('href', '#trade');
     expect(
-      screen.getByRole('link', { name: /study the model/i }),
+      screen.getByRole('link', { name: /watch 30s demo/i }),
     ).toHaveAttribute('href', '#why-rocky');
   });
 
   test('renders mechanism, tokenomics, faq, and footer copy', () => {
     render(<HomePage />);
 
+    const mechanismHeading = screen.getByRole('heading', {
+      name: /trading is mining\.\s*holding is discount\.\s*loop closes\./i,
+    });
+    expect(mechanismHeading).toBeInTheDocument();
     expect(
-      screen.getByRole('heading', {
-        name: /trading is mining\. holding is discount\. loop closes\./i,
-      }),
-    ).toBeInTheDocument();
+      mechanismHeading.querySelectorAll('.mechanism-intro__line'),
+    ).toHaveLength(3);
+
+    const flywheel = screen.getByLabelText(/rocky mechanism flow/i);
+    expect(flywheel.querySelectorAll('.flywheel-card')).toHaveLength(5);
+    expect(
+      screen.getByAltText(/rocky mechanism flywheel diagram/i),
+    ).toHaveAttribute('src', expect.stringContaining('group-17.svg'));
+    const mechanismSummary = screen
+      .getByText(/every trade mints rocky\./i)
+      .closest('.section-summary');
+    expect(mechanismSummary?.querySelectorAll('.mechanism-intro__summary-line')).toHaveLength(2);
 
     expect(
       screen.getByRole('heading', {
-        name: /1 billion pocky\. fixed supply\. half to users\./i,
+        name: /1 billion rocky\.\s*fixed supply\.\s*half to users\./i,
       }),
     ).toBeInTheDocument();
+    expect(
+      screen.getByAltText(/rocky token allocation chart/i),
+    ).toHaveAttribute('src', expect.stringContaining('echarts-pie.svg'));
 
     expect(
       screen.getByRole('heading', {
@@ -86,13 +104,13 @@ describe('homepage', () => {
     mechanismSteps.forEach((step) => {
       expect(screen.getByRole('heading', { name: step.title })).toBeInTheDocument();
       expect(screen.getByText(step.description)).toBeInTheDocument();
-      expect(screen.getByText(step.metric)).toBeInTheDocument();
     });
 
+    const allocationList = screen.getByRole('list', { name: /rocky allocation/i });
     tokenomicsAllocations.forEach((allocation) => {
-      expect(screen.getAllByText(allocation.share).length).toBeGreaterThan(0);
-      expect(screen.getByText(allocation.label)).toBeInTheDocument();
-      expect(screen.getByText(allocation.detail)).toBeInTheDocument();
+      expect(
+        allocationList.textContent,
+      ).toContain(`${allocation.share} ${allocation.label}. ${allocation.detail}`);
     });
   });
 

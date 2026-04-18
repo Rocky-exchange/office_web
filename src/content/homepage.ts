@@ -1,137 +1,203 @@
 export const navigationItems = [
-  { label: 'Why Rocky', href: '#why-rocky' },
-  { label: 'POCKY', href: '#pocky' },
+  { label: 'How It Works', href: '#mechanism' },
+  { label: 'Trading Is Mining', href: '#trade' },
+  { label: 'Tokenomic', href: '#pocky' },
+  { label: 'FAQ', href: '#faq' },
+  { label: 'Docs', href: '#footer' },
 ] as const;
 
 export const heroStats = [
-  { kicker: 'Execution', value: '<10μs', label: 'Orderbook response target' },
-  { kicker: 'Access', value: '0 bps', label: 'Maker entry hook' },
-  { kicker: 'Loop', value: '100%', label: 'POCKY-linked trading loop' },
-  { kicker: 'Cadence', value: '93/d', label: 'Protocol mining cycles' },
+  { value: '<10μs', label: 'Matching latency' },
+  { value: '0 bps', label: 'MEV exposure' },
+  { value: '100%', label: 'On-chain margin' },
+  { value: '93/d', label: 'Break-even trades' },
 ] as const;
 
 export const moatItems = [
   {
-    index: '01',
-    title: 'Market-linked rewards',
+    icon: '/pillars/privacy.svg',
+    title: 'Protocol-Level Privacy',
     description:
-      'Each filled order participates in a native issuance loop instead of relying on temporary growth promos.',
-    note: 'Read the issuance model',
-    href: '#trade',
+      "Canton's sub-transaction model means only you and your counterparty see the trade. Not the sequencer. Not the mediator. Not the bot sniffing for arbitrage.",
+    result:
+      'Zero MEV exposure — impossible to front-run or sandwich.',
   },
   {
-    index: '02',
-    title: 'Holding changes the fee surface',
+    icon: '/pillars/security.svg',
+    title: 'Bedrock Margin Security',
     description:
-      'POCKY ownership rewrites the economics of staying active, giving the platform a retention engine tied to use.',
-    note: 'See why staying matters',
-    href: '#trade',
+      "Your collateral locks into Canton's native LockedAmulet. Not a smart contract that can be exploited. The protocol itself enforces withdrawal rules.",
+    result:
+      'No custodial reuse of margin.',
   },
   {
-    index: '03',
-    title: 'Mechanics welded to the brand',
+    icon: '/pillars/speed.svg',
+    title: 'CEX Speed + DEX Safety',
     description:
-      'Rocky presents the token model as product architecture, not a detachable loyalty wrapper competitors can copy later.',
-    note: 'Trace the closed loop',
-    href: '#trade',
+      "Your collateral locks into Canton's native LockedAmulet. Not a smart contract that can be exploited. The protocol itself enforces withdrawal rules.",
+    result:
+      'HyperLiquid-class latency, provable settlement.',
   },
 ] as const;
 
 export const tradePoints = [
-  'Execution is the mining action, not a separate campaign funnel.',
-  'Ownership compounds into better economics for the traders who stay.',
-  'The product loop is visible, legible, and brand-native from the first screen.',
+  {
+    prefix: 'Order matches in ',
+    highlight: '<10μs',
+    suffix: '. Settlement batched to Canton every 5 seconds.',
+  },
+  {
+    prefix: 'Real-time mining rate shown on every order panel. ',
+    highlight: 'No surprises.',
+    suffix: '',
+  },
+  {
+    prefix: 'Up to ',
+    highlight: '100x leverage',
+    suffix: '. Protocol-secured margin via LockedAmulet.',
+  },
+  {
+    prefix: 'Plug in via ',
+    highlight: 'gRPC or FIX',
+    suffix: '. Same flow as Binance, built for quants.',
+  },
 ] as const;
 
 export const mechanismSteps = [
   {
     title: 'Trade',
     description:
-      'Spot and derivatives activity starts the loop; execution is the mining action itself.',
-    metric: 'Orders clear',
+      'Place orders on any market',
   },
   {
-    title: 'Earn POCKY',
+    title: 'Earn ROCKY',
     description:
-      'Filled flow participates in issuance so platform usage and token distribution stay connected.',
-    metric: 'Rewards accrue',
+      'Instant mining rewards per fill',
   },
   {
-    title: 'Hold for Benefits',
+    title: 'Unlock VIP',
     description:
-      'Wallet balance changes the fee surface and deepens the incentive to remain active.',
-    metric: 'Discounts unlock',
+      'Lower fees · higher rebates',
   },
   {
-    title: 'Re-enter With Edge',
+    title: 'Govern The Protocol',
     description:
-      'The best economics go to returning traders, closing the loop between usage and ownership.',
-    metric: 'Loop compounds',
+      'Vote on fees, markets, and treasury. Your ROCKY, your rules.',
+  },
+  {
+    title: 'Stake For Dividends',
+    description:
+      '25% of all platform fees flow to stakers — paid in CC, not inflation.',
   },
 ] as const;
 
 export const tokenomicsAllocations = [
   {
-    share: '50%',
-    label: 'User mining',
-    detail: 'Distribution routed through trading activity.',
+    share: '45%',
+    label: 'Mining Airdrop',
+    detail: 'Primary community distribution for active users.',
   },
   {
     share: '15%',
-    label: 'Treasury',
-    detail: 'Protocol operations, runway, and strategic reserves.',
+    label: 'Ecosystem Fund',
+    detail: 'Reserved for ecosystem growth and strategic expansion.',
   },
   {
     share: '15%',
-    label: 'Ecosystem',
-    detail: 'Partnerships, market expansion, and platform growth.',
+    label: 'Investors',
+    detail: 'Early backers aligned with network growth.',
+  },
+  {
+    share: '15%',
+    label: 'Team & Advisors',
+    detail: 'Long-term contributor and advisor allocation.',
   },
   {
     share: '10%',
-    label: 'Team vesting',
-    detail: 'Long-duration alignment with the product loop.',
-  },
-  {
-    share: '5%',
-    label: 'Liquidity',
-    detail: 'Market-making support and exchange depth.',
-  },
-  {
-    share: '5%',
-    label: 'Community reserve',
-    detail: 'Programs that keep participation visible and durable.',
+    label: 'Liquidity Bootstrap',
+    detail: 'Initial depth to support the launch market.',
   },
 ] as const;
 
-export const footerLinks = [
+export const footerCtaLinks = [
   { label: 'Launch App', href: '#hero', variant: 'primary' },
-  { label: 'Read FAQ', href: '#faq', variant: 'ghost' },
+  { label: 'Whitepaper', href: '#faq', variant: 'ghost' },
+] as const;
+
+export const footerColumns = [
+  {
+    title: 'Product',
+    links: [
+      { label: 'Trading App', href: '#trade' },
+      { label: 'DevNet Demo', href: '#hero' },
+      { label: 'API / gRPC', href: '#trade' },
+      { label: 'Markets', href: '#trade' },
+      { label: 'Status', href: '#footer' },
+    ],
+  },
+  {
+    title: 'Learn',
+    links: [
+      { label: 'Whitepaper', href: '#faq' },
+      { label: 'Documentation', href: '#footer' },
+      { label: 'Canton 101', href: '#why-rocky' },
+      { label: 'Tokenomics', href: '#pocky' },
+      { label: 'Research', href: '#mechanism' },
+    ],
+  },
+  {
+    title: 'Company',
+    links: [
+      { label: 'About', href: '#why-rocky' },
+      { label: 'Careers', href: '#footer' },
+      { label: 'Contact', href: '#footer' },
+      { label: 'Press Kit', href: '#footer' },
+      { label: 'Legal', href: '#footer' },
+    ],
+  },
+] as const;
+
+export const footerSocialLinks = [
+  { label: 'X', href: '#footer', icon: '/brand/social-x.svg' },
+  { label: 'Discord', href: '#footer', icon: '/brand/social-discord.svg' },
+  { label: 'Telegram', href: '#footer', icon: '/brand/social-tg.svg' },
+  { label: 'Medium', href: '#footer', icon: '/brand/social-medium.svg' },
 ] as const;
 
 export const faqItems = [
   {
-    question: 'What is Rocky?',
+    question: 'What is Canton Network and why build on it?',
     answer:
-      'Rocky is a crypto trading platform built around the POCKY token model and a trade-to-mine reward loop.',
+      'Canton is an enterprise-grade blockchain where every transaction is private by default — only the counterparties and validators see it. Unlike Ethereum or Solana, no one can scan the public mempool to front-run your trades. This is the only chain where a true MEV-free perpetual DEX is structurally possible.',
   },
   {
-    question: 'How does trading produce POCKY?',
+    question: 'What makes Rocky better than traditional brokers?',
     answer:
-      'Eligible trading activity participates in Rocky’s mining loop, connecting platform usage to token distribution.',
+      'Rocky combines CEX-class speed with protocol-level privacy, on-chain provable margin, and a token loop that pays active users instead of extracting from them.',
   },
   {
-    question: 'Is Rocky for beginners?',
+    question: 'What happens if ROCKY token price drops to zero?',
     answer:
-      'Yes. The homepage and onboarding flow are designed to make the platform legible to new users while preserving a premium trading brand.',
+      'Trading still works. The venue is designed to stand on execution quality first, while the ROCKY loop adds fee and participation upside on top.',
   },
   {
-    question: 'Why does holding matter?',
+    question: 'How do I earn ROCKY by trading?',
     answer:
-      'The model ties holding to fee or participation benefits, reinforcing the product loop described on the homepage.',
+      'Eligible fills participate in Rocky’s mining logic. Rewards are shown on the order panel so the economics are legible before you trade.',
   },
   {
-    question: 'How large is the POCKY supply?',
+    question: 'What Makes This Different From HyperLiquid Or DYdX?',
     answer:
-      'The homepage presents a fixed supply of 1 billion POCKY with half allocated to users.',
+      'Rocky is built around private execution and protocol-native collateral security. That changes the trust model, not just the interface.',
+  },
+  {
+    question: 'Is My Wallet Or Personal Data Exposed?',
+    answer:
+      'No. Rocky is designed to minimize public exposure of trading intent and settlement details, reducing the surface area for copy trading, front-running, and behavioral leakage.',
+  },
+  {
+    question: "When Can I Trade? What's The Roadmap?",
+    answer:
+      'The roadmap will be published alongside launch milestones. The FAQ section is structured to expand as product timelines and access details are finalized.',
   },
 ] as const;

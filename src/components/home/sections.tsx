@@ -1,6 +1,9 @@
+import Image from 'next/image';
+
 import {
-  faqItems,
-  footerLinks,
+  footerColumns,
+  footerCtaLinks,
+  footerSocialLinks,
   heroStats,
   mechanismSteps,
   moatItems,
@@ -13,8 +16,22 @@ export function Header() {
   return (
     <header className="site-header">
       <a className="brand-mark" href="#hero" aria-label="Rocky home">
-        <span className="brand-mark__halo" aria-hidden="true" />
-        <span className="brand-mark__word">ROCKY</span>
+        <Image
+          className="brand-mark__icon"
+          src="/brand/rocky-mark.svg"
+          alt=""
+          width={32}
+          height={32}
+          priority
+        />
+        <Image
+          className="brand-mark__wordmark"
+          src="/brand/rocky-wordmark.svg"
+          alt="ROCKY"
+          width={82}
+          height={16}
+          priority
+        />
       </a>
 
       <nav className="site-nav" aria-label="Primary">
@@ -26,10 +43,10 @@ export function Header() {
       </nav>
 
       <div className="header-actions">
-        <a className="ghost-button" href="#why-rocky">
-          Read the thesis
+        <a className="ghost-button ghost-button--header" href="#why-rocky">
+          View Demo
         </a>
-        <a className="primary-button" href="#trade">
+        <a className="primary-button primary-button--header" href="#trade">
           Launch App
         </a>
       </div>
@@ -41,58 +58,71 @@ export function HeroSection() {
   return (
     <section id="hero" className="hero-section">
       <div className="hero-atmosphere" aria-hidden="true">
-        <div className="hero-horizon" />
-        <div className="hero-monument" />
-        <div className="hero-gridline hero-gridline--left" />
-        <div className="hero-gridline hero-gridline--right" />
+        <div className="hero-image" />
+        <div className="hero-video-overlay" />
       </div>
 
       <div className="hero-copy">
-        <p className="eyebrow">Rocky Exchange</p>
-        <h1>PRIVATE POSITIONS. MINING TRADES. ALL IN POCKY.</h1>
+        <h1>
+          CANTON ENCRYPTS.{` `}
+          <br />
+          ROCKY EARNS.
+        </h1>
         <p className="hero-summary">
-          Rocky turns a trading venue into a closed-loop system where execution,
-          token issuance, and holding behavior reinforce each other.
+          Protect your strategy. Secure your margin. Earn with every trade.
         </p>
 
         <div className="cta-row">
           <a className="primary-button" href="#trade">
-            Start Trading
+            LAUNCH APP <span aria-hidden="true">→</span>
           </a>
           <a className="ghost-button" href="#why-rocky">
-            Study the model
+            WATCH 30S DEMO <span aria-hidden="true">▷</span>
           </a>
         </div>
       </div>
 
-      <ul className="stat-grid" aria-label="Platform highlights">
-        {heroStats.map((stat) => (
-          <li key={stat.label}>
-            <span className="stat-kicker">{stat.kicker}</span>
-            <strong>{stat.value}</strong>
-            <span>{stat.label}</span>
-          </li>
-        ))}
-      </ul>
+      <div className="stat-strip">
+        <ul className="stat-grid" aria-label="Platform highlights">
+          {heroStats.map((stat) => (
+            <li key={stat.label}>
+              <strong>{stat.value}</strong>
+              <span>{stat.label}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 }
 
 export function MoatsSection() {
   return (
-    <section id="why-rocky" className="panel-section">
+    <section id="why-rocky" className="panel-section pillars-section">
       <div className="section-intro">
-        <p className="eyebrow">Why Rocky</p>
-        <h2>Three Moats Competitors Structurally Cannot Replicate.</h2>
+        <p className="eyebrow">[ Core Pillars ]</p>
+        <h2>Why Rocky Is Hard To Replicate</h2>
+        <p className="section-summary">
+          Most perp DEXs operate on transparent execution environments
+        </p>
       </div>
 
       <div className="moat-grid">
         {moatItems.map((item) => (
           <article key={item.title} className="moat-card">
-            <p className="moat-index">{item.index}</p>
+            <Image
+              src={item.icon}
+              alt=""
+              width={28}
+              height={28}
+              className="moat-card__icon"
+            />
             <h3>{item.title}</h3>
             <p>{item.description}</p>
-            <a href={item.href}>{item.note}</a>
+            <div className="moat-card__divider" aria-hidden="true" />
+            <p className="moat-card__result">
+              Result: <span>{item.result}</span>
+            </p>
           </article>
         ))}
       </div>
@@ -104,35 +134,64 @@ export function TradeSection() {
   return (
     <section id="trade" className="trade-section">
       <div className="trade-panel" aria-hidden="true">
+        <div className="trade-panel__rocks">
+          <div className="trade-panel__rock trade-panel__rock--small" />
+          <div className="trade-panel__rock trade-panel__rock--large" />
+        </div>
         <div className="trade-panel__frame">
-          <div className="trade-panel__header">
-            <span>BTC / POCKY</span>
-            <span>Mining live</span>
+          <div className="trade-panel__rows">
+            <div className="trade-panel__row">
+              <span>Order Size</span>
+              <strong>$10,000.00</strong>
+            </div>
+            <div className="trade-panel__row">
+              <span>Fee (0.025%)</span>
+              <strong>−2.50 USDT</strong>
+            </div>
+            <div className="trade-panel__row trade-panel__row--reward">
+              <span>Mining Reward</span>
+              <strong>+25 ROCKY (~$12.50)</strong>
+            </div>
           </div>
-          <div className="trade-panel__chart" />
-          <div className="trade-panel__ledger">
-            <span>Fee discount unlocked</span>
-            <span>POCKY output 4.8x</span>
-            <button type="button">Buy &amp; Mine</button>
+          <div className="trade-panel__divider" />
+          <div className="trade-panel__summary">
+            <span>Net Cost</span>
+            <strong>−$10.00 (Negative)</strong>
           </div>
+          <button type="button" className="trade-panel__action">
+            BUY 0.148 BTC
+          </button>
         </div>
       </div>
 
       <div className="trade-copy">
-        <p className="eyebrow">Trade-to-Mine</p>
-        <h2>Every Trade You Make Produces POCKY.</h2>
+        <p className="eyebrow">Trading</p>
+        <h2>Every Trade You Make Produces ROCKY.</h2>
         <p className="trade-description">
-          Rocky routes activity back into ownership. Trading creates POCKY,
-          holding changes the economics, and the desk becomes the distribution
-          engine.
+          Unlike most DEXs, where fees simply disappear, Rocky gives them back
+          to you.
+        </p>
+        <p className="trade-description">
+          The moment your order is executed, mining rewards are sent to your
+          wallet in real time.
         </p>
         <ul className="trade-points">
           {tradePoints.map((point) => (
-            <li key={point}>{point}</li>
+            <li key={`${point.prefix}-${point.highlight}`}>
+              <span className="trade-points__spark" aria-hidden="true">
+                ✦
+              </span>
+              <span>
+                {point.prefix}
+                <strong>{point.highlight}</strong>
+                {point.suffix}
+              </span>
+            </li>
           ))}
         </ul>
-        <a className="primary-button" href="#hero">
-          Enter Rocky
+        <a className="primary-button trade-copy__cta" href="#hero">
+          Try Demo
+          <span aria-hidden="true">→</span>
         </a>
       </div>
     </section>
@@ -142,26 +201,63 @@ export function TradeSection() {
 export function MechanismSection() {
   return (
     <section id="mechanism" className="panel-section mechanism-section">
-      <div className="section-intro">
-        <p className="eyebrow">Mechanism</p>
-        <h2>Trading Is Mining. Holding Is Discount. Loop Closes.</h2>
+      <div className="section-intro mechanism-intro">
+        <p className="eyebrow">[ THE FLYWHEEL ]</p>
+        <h2>
+          <span className="mechanism-intro__line mechanism-intro__line--warm">
+            Trading is Mining.
+          </span>
+          <span className="mechanism-intro__line mechanism-intro__line--warm">
+            Holding is Discount.
+          </span>
+          <span className="mechanism-intro__line mechanism-intro__line--cool">
+            Loop Closes.
+          </span>
+        </h2>
         <p className="section-summary">
-          Rocky makes the incentive surface legible. Traders can see where
-          activity becomes POCKY, how holding changes economics, and why the
-          loop favors participants who come back.
+          <span className="mechanism-intro__summary-line">
+            Every trade mints ROCKY. Every ROCKY you hold reduces your fees.
+          </span>
+          <span className="mechanism-intro__summary-line">
+            Every discount brings you back. The flywheel pays for itself.
+          </span>
         </p>
       </div>
 
-      <div className="flow-grid" aria-label="Rocky mechanism flow">
+      {/* SVG is the source of truth for the desktop flywheel composition. */}
+      <div className="flywheel-svg-shell">
+        <Image
+          className="flywheel-svg"
+          src="/group-17.svg"
+          alt="Rocky mechanism flywheel diagram"
+          width={1208}
+          height={420}
+          priority={false}
+        />
+      </div>
+
+      <div className="flywheel flywheel--mobile" aria-label="Rocky mechanism flow">
         {mechanismSteps.map((step, index) => (
-          <article key={step.title} className="flow-card">
-            <p className="moat-index">{String(index + 1).padStart(2, '0')}</p>
+          <article
+            key={step.title}
+            className={`flywheel-card flywheel-card--${index + 1}`}
+          >
+            <p className="flywheel-card__index">
+              {String(index + 1).padStart(2, '0')}
+            </p>
             <h3>{step.title}</h3>
             <p>{step.description}</p>
-            <span>{step.metric}</span>
           </article>
         ))}
       </div>
+
+      <ol className="sr-only" aria-label="Mechanism steps">
+        {mechanismSteps.map((step, index) => (
+          <li key={step.title}>
+            {String(index + 1).padStart(2, '0')} {step.title}. {step.description}
+          </li>
+        ))}
+      </ol>
     </section>
   );
 }
@@ -169,85 +265,159 @@ export function MechanismSection() {
 export function TokenomicsSection() {
   return (
     <section id="pocky" className="tokenomics-section">
-      <div className="section-intro">
-        <p className="eyebrow">Tokenomics</p>
-        <h2>1 Billion POCKY. Fixed Supply. Half To Users.</h2>
+      <div className="tokenomics-atmosphere" aria-hidden="true" />
+
+      <div className="section-intro tokenomics-intro">
+        <p className="eyebrow">[ TOKENOMICS ]</p>
+        <h2 aria-label="1 Billion ROCKY. Fixed Supply. Half to Users.">
+          <span className="tokenomics-intro__line">
+            <span className="tokenomics-intro__accent">1 Billion</span>{' '}
+            <span className="tokenomics-intro__base">ROCKY.</span>
+          </span>
+          <span className="tokenomics-intro__line tokenomics-intro__line--nowrap">
+            <span className="tokenomics-intro__accent">Fixed Supply.</span>{' '}
+            <span className="tokenomics-intro__base">Half to Users.</span>
+          </span>
+        </h2>
         <p className="section-summary">
-          The supply is fixed from day one. Half of all POCKY is routed to user
-          participation so the platform rewards sustained trading instead of
-          one-off campaigns.
+          No inflation. No endless unlocks. Community-first from day one.
         </p>
       </div>
 
-      <div className="tokenomics-layout">
-        <div className="tokenomics-visual" aria-hidden="true">
-          <div className="donut-chart" />
-          <div className="tokenomics-visual__center">
-            <strong>1B</strong>
-            <span>Fixed supply</span>
-          </div>
-        </div>
-
-        <ul className="allocation-list" aria-label="POCKY allocation">
-          {tokenomicsAllocations.map((allocation) => (
-            <li key={allocation.label}>
-              <strong>{allocation.share}</strong>
-              <div>
-                <span>{allocation.label}</span>
-                <p>{allocation.detail}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-  );
-}
-
-export function FaqSection() {
-  return (
-    <section id="faq" className="faq-section">
-      <div className="section-intro">
-        <p className="eyebrow">FAQ</p>
-        <h2>Frequently Asked Questions</h2>
+      <div className="tokenomics-stage">
+        <Image
+          className="tokenomics-stage__chart"
+          src="/echarts-pie.svg"
+          alt="Rocky token allocation chart"
+          width={872}
+          height={651}
+          unoptimized
+        />
       </div>
 
-      <div className="faq-list">
-        {faqItems.map((item, index) => (
-          <details key={item.question} open={index === 0}>
-            <summary>{item.question}</summary>
-            <p>{item.answer}</p>
-          </details>
+      <ol className="sr-only" aria-label="ROCKY allocation">
+        {tokenomicsAllocations.map((allocation) => (
+          <li key={allocation.label}>
+            {allocation.share} {allocation.label}. {allocation.detail}
+          </li>
         ))}
-      </div>
+      </ol>
     </section>
   );
 }
 
 export function FooterSection() {
   return (
-    <footer className="footer-section">
-      <div className="footer-copy">
-        <p className="eyebrow">Built for the Loop</p>
-        <h2>SEALED IN CANTON. FORGED IN ROCKY.</h2>
-        <p className="footer-description">
-          Rocky combines cinematic brand identity with a product loop centered
-          on POCKY, fixed tokenomics, and beginner-legible trading mechanics.
-        </p>
+    <footer id="footer" className="footer-section">
+      <div className="footer-atmosphere" aria-hidden="true">
+        <div className="footer-image" />
+        {/* <div className="footer-video-overlay" /> */}
       </div>
 
-      <div className="cta-row">
-        {footerLinks.map((link) => (
-          <a
-            key={link.label}
-            className={
-              link.variant === 'primary' ? 'primary-button' : 'ghost-button'
-            }
-            href={link.href}
-          >
-            {link.label}
-          </a>
-        ))}
+      <div className="footer-shell">
+        <div className="footer-hero">
+          <div className="footer-copy">
+            <h2>
+              <span className="footer-copy__line">
+                <span className="footer-copy__warm">POWERED BY </span>
+                <span className="footer-copy__cool">CANTON.</span>
+              </span>
+              <span className="footer-copy__line">
+                <span className="footer-copy__warm">DEFINED BY </span>
+                <span className="footer-copy__cool">ROCKY.</span>
+              </span>
+            </h2>
+            <p className="footer-description">
+              Built on Canton&apos;s secure infrastructure, Rocky gives traders
+              stronger protection, faster execution, and instant CC rewards
+              tied to every trade.
+            </p>
+          </div>
+
+          <div className="footer-actions">
+            {footerCtaLinks.map((link) => (
+              <a
+                key={link.label}
+                className={`${
+                  link.variant === 'primary'
+                    ? 'primary-button primary-button--footer'
+                    : 'ghost-button ghost-button--footer'
+                }`}
+                href={link.href}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div className="footer-divider" aria-hidden="true" />
+
+        <div className="footer-links-grid">
+          <div className="footer-brand">
+            <a className="footer-brand__mark" href="#hero" aria-label="Rocky home">
+              <Image
+                className="footer-brand__logo"
+                src="/brand/footer-logo.svg"
+                alt=""
+                width={32}
+                height={32}
+              />
+              <Image
+                className="footer-brand__wordmark"
+                src="/brand/rocky-wordmark.svg"
+                alt="ROCKY"
+                width={132}
+                height={26}
+              />
+            </a>
+            <p>
+              The first perpetual futures DEX on Canton Network.
+              Protocol-level privacy. Protocol-secured margin. Sub-10μs
+              matching.
+            </p>
+          </div>
+
+          {footerColumns.map((column) => (
+            <nav key={column.title} className="footer-column" aria-label={column.title}>
+              <h3>{column.title}</h3>
+              <div className="footer-column__links">
+                {column.links.map((link) => (
+                  <a key={link.label} href={link.href}>
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </nav>
+          ))}
+
+          <div className="footer-column footer-column--social">
+            <h3>Social Media</h3>
+            <div className="footer-socials">
+              {footerSocialLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  aria-label={link.label}
+                  className={`footer-socials__link footer-socials__link--${link.label.toLowerCase()}`}
+                >
+                  <Image
+                    src={link.icon}
+                    alt=""
+                    width={20}
+                    height={20}
+                    className="footer-socials__icon"
+                  />
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="footer-legal">
+          © 2026 Rocky Exchange. All rights reserved. · ROCKY is a utility
+          token, not an investment product.
+        </div>
       </div>
     </footer>
   );

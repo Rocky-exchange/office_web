@@ -722,6 +722,7 @@ a {
 .rocky-homepage .trade-panel {
   position: relative;
   min-height: 42rem;
+  isolation: isolate;
 }
 
 .rocky-homepage .trade-panel__rock-wrap {
@@ -729,20 +730,28 @@ a {
   pointer-events: none;
 }
 
+.rocky-homepage .trade-panel__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
 .rocky-homepage .trade-panel__rock-wrap--small {
-  top: 1.35rem;
-  left: 16.7rem;
+  top: 6rem;
+  bottom: auto;
+  left: 20rem;
   width: 7.5rem;
   height: 9.2rem;
   z-index: 1;
 }
 
 .rocky-homepage .trade-panel__rock-wrap--large {
-  top: -1.65rem;
-  left: 28.5rem;
+  top: -1.1rem;
+  left: 32rem;
   width: 14.6rem;
   height: 17.4rem;
-  z-index: 3;
+  z-index: 1;
 }
 
 .rocky-homepage .trade-panel__rock-shadow {
@@ -797,8 +806,7 @@ a {
   /* clip-path: polygon(34% 2%, 71% 2%, 88% 18%, 96% 53%, 76% 93%, 33% 96%, 10% 62%, 12% 26%); */
   transform: rotate(16.99deg);
   filter: none;
-  opacity: 0.7;
-  top: 80px;
+  opacity: 0.85;
   z-index: 0;
 }
 
@@ -811,7 +819,7 @@ a {
   transform: rotate(-13.88deg);
   filter: none;
   top: 10px;
-  z-index: 3;
+  z-index: 1;
 }
 
 .rocky-homepage .trade-panel__rock--small::after {
@@ -850,13 +858,6 @@ a {
   max-width: 100%;
   margin-top: 11.55rem;
   padding: 3.35rem 3.7rem 3.15rem;
-  border: 1px solid transparent;
-  border-image-source: linear-gradient(
-    36.8deg,
-    rgba(215, 179, 114, 0.5) 22.09%,
-    rgba(215, 179, 114, 0) 82.9%
-  );
-  border-image-slice: 1;
   border-radius: 2.15rem;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 34%),
@@ -866,6 +867,28 @@ a {
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.05),
     0 18px 50px rgba(0, 0, 0, 0.14);
+}
+
+.rocky-homepage .trade-panel__frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    36.8deg,
+    rgba(215, 179, 114, 0.5) 22.09%,
+    rgba(215, 179, 114, 0) 82.9%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .rocky-homepage .trade-panel__rows {
@@ -1975,8 +1998,9 @@ a {
   }
 
   .rocky-homepage .trade-panel__rock-wrap--small {
-    top: 2.4rem;
-    left: 7rem;
+    top: auto;
+    bottom: -1.6rem;
+    left: 1.2rem;
     width: 5.5rem;
     height: 6.8rem;
   }
@@ -2176,6 +2200,195 @@ a {
 
   .rocky-homepage .footer-socials {
     gap: 0.62rem;
+  }
+}
+
+/* H5 refinements: collapse nowrap typography, compact header, reset tokenomics offsets */
+@media (max-width: 780px) {
+  :root {
+    --header-height: 56px;
+  }
+
+  .rocky-homepage .site-header {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto;
+    align-items: center;
+    justify-items: stretch;
+    height: var(--header-height);
+    padding: 0 1rem;
+    gap: 0.6rem;
+  }
+
+  .rocky-homepage .site-nav {
+    display: none;
+  }
+
+  .rocky-homepage .header-actions {
+    justify-self: end;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+  }
+
+  .rocky-homepage .primary-button--header,
+  .rocky-homepage .ghost-button--header {
+    min-width: 0;
+    min-height: 2.15rem;
+    padding: 0 0.85rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+
+  .rocky-homepage .brand-mark__icon {
+    width: 2.1rem;
+    height: 2.1rem;
+  }
+
+  .rocky-homepage .brand-mark__wordmark {
+    height: 1.05rem;
+  }
+
+  .rocky-homepage .pillars-section .section-intro h2,
+  .rocky-homepage .pillars-section .section-intro,
+  .rocky-homepage .tokenomics-intro h2,
+  .rocky-homepage .faq-section h2 {
+    white-space: normal;
+    text-wrap: balance;
+    max-width: 100%;
+  }
+
+  .rocky-homepage .trade-copy__headline-line,
+  .rocky-homepage .tokenomics-intro__line,
+  .rocky-homepage .tokenomics-intro__line--nowrap,
+  .rocky-homepage .footer-copy__line,
+  .rocky-homepage .footer-copy__warm,
+  .rocky-homepage .footer-copy__cool {
+    white-space: normal;
+  }
+
+  .rocky-homepage .trade-section .trade-copy h2 {
+    display: block;
+  }
+
+  .rocky-homepage .footer-copy__line {
+    display: block;
+    text-align: center;
+  }
+
+  .rocky-homepage .tokenomics-intro {
+    top: 0;
+  }
+
+  .rocky-homepage .tokenomics-stage {
+    bottom: 0;
+  }
+
+  .rocky-homepage .footer-actions {
+    flex-direction: column;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .rocky-homepage .stat-strip {
+    padding: 1.75rem 1rem;
+    min-height: auto;
+  }
+
+  .rocky-homepage .stat-grid {
+    column-gap: 1rem;
+    row-gap: 1.25rem;
+  }
+
+  .rocky-homepage .stat-grid strong {
+    font-size: 26px;
+    line-height: 1.15;
+  }
+
+  .rocky-homepage .hero-copy {
+    justify-self: stretch;
+    width: auto;
+    max-width: 100%;
+    margin: 0 auto 3rem;
+    padding: 5.5rem 1rem 0;
+    text-align: center;
+  }
+
+  .rocky-homepage .hero-copy h1 {
+    width: 100%;
+    margin-inline: auto;
+    font-size: clamp(2.4rem, 11vw, 3.6rem);
+  }
+
+  .rocky-homepage .hero-summary {
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  .rocky-homepage .cta-row {
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  .rocky-homepage .hero-copy .primary-button,
+  .rocky-homepage .hero-copy .ghost-button {
+    width: auto;
+    flex: 1 1 140px;
+    min-width: 0;
+    padding: 0 1rem;
+    font-size: 0.82rem;
+  }
+
+  .rocky-homepage .moat-card {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 24rem;
+    padding: 2.6rem 1.75rem 2rem;
+  }
+
+  .rocky-homepage .moat-card h3,
+  .rocky-homepage .moat-card p,
+  .rocky-homepage .moat-card__result {
+    max-width: 100%;
+  }
+
+  .rocky-homepage .moat-grid {
+    grid-template-columns: 1fr;
+    margin-top: 2.75rem;
+    gap: 1rem;
+  }
+
+  .rocky-homepage .pillars-section .section-intro,
+  .rocky-homepage .pillars-section .moat-grid {
+    width: min(100vw - 32px, 1708px);
+  }
+}
+
+@media (max-width: 420px) {
+  .rocky-homepage .ghost-button--header {
+    display: none;
+  }
+
+  .rocky-homepage .primary-button--header {
+    padding: 0 1rem;
+  }
+
+  .rocky-homepage .trade-panel__rock-wrap--small {
+    top: auto;
+    bottom: -1.2rem;
+    left: 0.8rem;
+    width: 4.5rem;
+    height: 5.6rem;
+  }
+
+  .rocky-homepage .trade-panel__rock-wrap--large {
+    left: 9rem;
+    width: 7rem;
+    height: 9rem;
   }
 }
 

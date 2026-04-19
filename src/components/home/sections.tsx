@@ -18,7 +18,7 @@ export function Header() {
       <a className="brand-mark" href="#hero" aria-label="Rocky home">
         <Image
           className="brand-mark__icon"
-          src="/brand/rocky-mark.svg"
+          src="/brand/footer-logo.svg"
           alt=""
           width={32}
           height={32}
@@ -163,13 +163,15 @@ export function TradeSection() {
           <div className="trade-panel__rock trade-panel__rock--small">
             <video
               className="trade-panel__rock-video"
-              src="/trade-token.mp4"
               autoPlay
               loop
               muted
               playsInline
               preload="auto"
-            />
+            >
+              <source src="/stoneMotion.webm" type="video/webm" />
+              <source src="/stoneMotion.mp4" type="video/mp4" />
+            </video>
           </div>
         </div>
         <div className="trade-panel__frame">
@@ -196,17 +198,21 @@ export function TradeSection() {
             BUY 0.148 BTC
           </button>
         </div>
-        <div className="trade-panel__rock-wrap trade-panel__rock-wrap--large">
-          <div className="trade-panel__rock trade-panel__rock--large">
-            <video
-              className="trade-panel__rock-video"
-              src="/trade-token.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="auto"
-            />
+        <div className="trade-panel__overlay">
+          <div className="trade-panel__rock-wrap trade-panel__rock-wrap--large">
+            <div className="trade-panel__rock trade-panel__rock--large">
+              <video
+                className="trade-panel__rock-video"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+              >
+                <source src="/stoneMotion.webm" type="video/webm" />
+                <source src="/stoneMotion.mp4" type="video/mp4" />
+              </video>
+            </div>
           </div>
         </div>
       </div>

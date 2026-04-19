@@ -100,7 +100,7 @@ export function HeroSection() {
             LAUNCH APP <span aria-hidden="true">→</span>
           </a>
           <a className="ghost-button" href="#why-rocky">
-            WATCH 30S DEMO <span aria-hidden="true">▷</span>
+            WATCH DEMO <span aria-hidden="true">▷</span>
           </a>
         </div>
       </div>

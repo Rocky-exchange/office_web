@@ -43,14 +43,14 @@ export function Header() {
       </nav>
 
       <div className="header-actions">
-        <a
+        {/* <a
           className="ghost-button ghost-button--header"
           href="https://demo.rocky.exchange"
           target="_blank"
           rel="noreferrer"
         >
           View Demo
-        </a>
+        </a> */}
         <a
           className="primary-button primary-button--header"
           href="https://app.rocky.exchange"

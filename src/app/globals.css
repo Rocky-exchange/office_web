@@ -296,6 +296,12 @@ a {
   z-index: 1;
 }
 
+.rocky-homepage .stat-strip,
+.rocky-homepage .hero-section > .stat-strip {
+  position: relative;
+  z-index: 2;
+}
+
 .rocky-homepage .hero-copy {
   align-self: center;
   justify-self: end;
@@ -517,11 +523,25 @@ a {
 }
 
 .rocky-homepage .pillars-section {
+  position: relative;
   width: 100%;
   margin: 0;
   padding-top: 7rem;
   padding-bottom: 6.5rem;
-  background: linear-gradient(180deg, #3d3224 0%, #120d0a 40%);
+  /* background: linear-gradient(180deg, #3d3224 0%, #120d0a 40%); */
+  background: #120D0A;
+}
+
+.rocky-homepage .pillars-section::before {
+  position: absolute;
+  top: -280px;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 280px;
+  content: '';
+  background: linear-gradient(0deg, #120d0a 8.55%, rgba(18, 13, 10, 0) 100%);
+  pointer-events: none;
 }
 
 .rocky-homepage .section-intro {
@@ -531,6 +551,8 @@ a {
 }
 
 .rocky-homepage .pillars-section .section-intro {
+  position: relative;
+  z-index: 1;
   width: min(100%, 78rem);
   margin-inline: auto;
   text-align: center;
@@ -542,6 +564,11 @@ a {
 .rocky-homepage .pillars-section .moat-grid {
   width: min(1708px, calc(100vw - 96px));
   margin-inline: auto;
+}
+
+.rocky-homepage .pillars-section .moat-grid {
+  position: relative;
+  z-index: 1;
 }
 
 .rocky-homepage .section-intro h2,

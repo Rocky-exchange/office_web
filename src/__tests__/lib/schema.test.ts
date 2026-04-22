@@ -22,8 +22,8 @@ describe('schema builders', () => {
 describe('site metadata', () => {
   test('exports the Rocky metadata baseline', () => {
     expect(siteMetadata.metadataBase?.toString()).toBe('https://rocky.exchange/');
-    expect(siteMetadata.title).toBe('Rocky | POCKY Crypto Trading Platform');
-    expect(siteMetadata.openGraph?.title).toBe('Rocky | POCKY Crypto Trading Platform');
-    expect(siteMetadata.twitter?.title).toBe('Rocky | POCKY Crypto Trading Platform');
+    expect(siteMetadata.title).toBe('Rocky | Rocky Crypto Trading Platform');
+    expect(siteMetadata.openGraph?.title).toBe('Rocky | Rocky Crypto Trading Platform');
+    expect(siteMetadata.twitter?.title).toBe('Rocky | Rocky Crypto Trading Platform');
   });
 });

@@ -223,6 +223,72 @@ a {
   letter-spacing: 0.08em;
 }
 
+.rocky-homepage .audio-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.82rem;
+  height: 2.82rem;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 0;
+  background: transparent;
+  color: #f4efe6;
+  cursor: pointer;
+  transition:
+    color 200ms ease,
+    border-color 200ms ease,
+    background-color 200ms ease,
+    transform 200ms ease;
+}
+
+.rocky-homepage .audio-toggle:hover {
+  border-color: rgba(245, 168, 95, 0.65);
+  color: #ffd09f;
+}
+
+.rocky-homepage .audio-toggle:focus-visible {
+  outline: 2px solid #f5a85f;
+  outline-offset: 2px;
+}
+
+.rocky-homepage .audio-toggle--playing {
+  border-color: rgba(245, 168, 95, 0.6);
+  background: rgba(245, 168, 95, 0.08);
+  color: #ffd09f;
+}
+
+.rocky-homepage .audio-toggle__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rocky-homepage .audio-toggle--playing .audio-toggle__wave {
+  transform-origin: 19px 10.5px;
+  animation: audio-toggle-wave 1.6s ease-in-out infinite;
+}
+
+.rocky-homepage .audio-toggle--playing .audio-toggle__wave--2 {
+  animation-delay: 200ms;
+}
+
+@keyframes audio-toggle-wave {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rocky-homepage .audio-toggle__wave {
+    animation: none !important;
+  }
+}
+
 .rocky-homepage .primary-button--footer,
 .rocky-homepage .ghost-button--footer {
   min-height: 3.35rem;
@@ -2265,6 +2331,11 @@ a {
     font-size: 0.72rem;
     letter-spacing: 0.06em;
     white-space: nowrap;
+  }
+
+  .rocky-homepage .audio-toggle {
+    width: 2.15rem;
+    height: 2.15rem;
   }
 
   .rocky-homepage .brand-mark__icon {

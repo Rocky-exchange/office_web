@@ -1,5 +1,6 @@
 import Image from 'next/image';
 
+import { AudioToggle } from '@/components/home/audio-toggle';
 import {
   footerColumns,
   footerCtaLinks,
@@ -51,6 +52,7 @@ export function Header() {
         >
           View Demo
         </a> */}
+        <AudioToggle />
         <a
           className="primary-button primary-button--header"
           href="https://app.rocky.exchange"

@@ -56,7 +56,7 @@ describe('homepage', () => {
     ).toHaveAttribute('href', '#trade');
     expect(
       screen.getByRole('link', { name: /watch demo/i }),
-    ).toHaveAttribute('href', '#why-rocky');
+    ).toHaveAttribute('href', 'https://demo.rocky.exchange/dashboard');
   });
 
   test('renders mechanism, tokenomics, faq, and footer copy', () => {

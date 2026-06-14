@@ -101,8 +101,13 @@ export function HeroSection() {
           >
             LAUNCH APP <span aria-hidden="true">→</span>
           </a>
-          <a className="ghost-button" href="#why-rocky">
-            WATCH DEMO <span aria-hidden="true">▷</span>
+          <a
+            className="ghost-button"
+            href="https://demo.rocky.exchange/dashboard"
+            target="_blank"
+            rel="noreferrer"
+          >
+            WATCH DEMO
           </a>
         </div>
       </div>

@@ -107,7 +107,7 @@ export function HeroSection() {
             target="_blank"
             rel="noreferrer"
           >
-            WATCH DEMO
+            TRY DEMO
           </a>
         </div>
       </div>

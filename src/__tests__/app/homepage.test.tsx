@@ -55,7 +55,7 @@ describe('homepage', () => {
       screen.getAllByRole('link', { name: /launch app/i })[0],
     ).toHaveAttribute('href', '#trade');
     expect(
-      screen.getByRole('link', { name: /watch demo/i }),
+      screen.getByRole('link', { name: /try demo/i }),
     ).toHaveAttribute('href', 'https://demo.rocky.exchange/dashboard');
   });
 

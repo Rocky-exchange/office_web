@@ -145,23 +145,11 @@ export const footerColumns = [
       { label: 'Research', href: '#mechanism' },
     ],
   },
-  {
-    title: 'Company',
-    links: [
-      { label: 'About', href: '#why-rocky' },
-      { label: 'Careers', href: '#footer' },
-      { label: 'Contact', href: '#footer' },
-      { label: 'Press Kit', href: '#footer' },
-      { label: 'Legal', href: '#footer' },
-    ],
-  },
 ] as const;
 
 export const footerSocialLinks = [
   { label: 'X', href: '#footer', icon: '/brand/social-x.svg' },
   { label: 'Discord', href: '#footer', icon: '/brand/social-discord.svg' },
-  { label: 'Telegram', href: '#footer', icon: '/brand/social-tg.svg' },
-  { label: 'Medium', href: '#footer', icon: '/brand/social-medium.svg' },
 ] as const;
 
 export const faqItems = [

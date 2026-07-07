@@ -1779,7 +1779,7 @@ a {
 
 .rocky-homepage .footer-links-grid {
   display: grid;
-  grid-template-columns: minmax(18rem, 1.5fr) repeat(4, minmax(9rem, 1fr));
+  grid-template-columns: minmax(18rem, 1.5fr) repeat(3, minmax(9rem, 1fr));
   gap: 2.5rem;
   align-items: start;
   padding: 4.75rem 0 5.8rem;

@@ -451,8 +451,12 @@ export function FooterSection() {
             </a>
             <p>
               The first perpetual futures DEX on Canton Network.
-              Protocol-level privacy. Protocol-secured margin. Sub-10μs
-              matching.
+              <br />
+              Protocol-level privacy.
+              <br />
+              Protocol-secured margin.
+              <br />
+              Sub-10μs matching.
             </p>
           </div>
 

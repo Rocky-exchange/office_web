@@ -1786,7 +1786,7 @@ a {
 }
 
 .rocky-homepage .footer-brand {
-  max-width: 21rem;
+  max-width: 27rem;
 }
 
 .rocky-homepage .footer-brand__mark {
@@ -1810,8 +1810,9 @@ a {
   margin: 1.7rem 0 0;
   color: rgba(244, 239, 230, 0.72);
   font-family: var(--font-inter), sans-serif;
-  font-size: 14px;
-  line-height: 1.35;
+  font-size: clamp(11px, 3.3vw, 14px);
+  line-height: 1.6;
+  white-space: nowrap;
 }
 
 .rocky-homepage .footer-column {

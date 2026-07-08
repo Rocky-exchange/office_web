@@ -486,6 +486,9 @@ export function FooterSection() {
                   key={link.label}
                   href={link.href}
                   aria-label={link.label}
+                  {...(link.href.startsWith('http')
+                    ? { target: '_blank', rel: 'noreferrer' }
+                    : {})}
                   className={`footer-socials__link footer-socials__link--${link.label.toLowerCase()}`}
                 >
                   <Image
@@ -502,8 +505,7 @@ export function FooterSection() {
         </div>
 
         <div className="footer-legal">
-          © 2026 Rocky Exchange. All rights reserved. · ROCKY is a utility
-          token, not an investment product.
+          © 2026 Rocky Exchange. All rights reserved.
         </div>
       </div>
     </footer>

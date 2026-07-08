@@ -128,11 +128,8 @@ export const footerColumns = [
   {
     title: 'Product',
     links: [
-      { label: 'Trading App', href: '#trade' },
-      { label: 'DevNet Demo', href: '#hero' },
-      { label: 'API / gRPC', href: '#trade' },
-      { label: 'Markets', href: '#trade' },
-      { label: 'Status', href: '#footer' },
+      { label: 'Trading App', href: 'https://app.rocky.exchange/trade' },
+      { label: 'API / gRPC', href: 'https://developers.rocky.exchange/' },
     ],
   },
   {
@@ -149,8 +146,8 @@ export const footerColumns = [
 ] as const;
 
 export const footerSocialLinks = [
-  { label: 'X', href: '#footer', icon: '/brand/social-x.svg' },
-  { label: 'Discord', href: '#footer', icon: '/brand/social-discord.svg' },
+  { label: 'X', href: 'https://x.com/Rocky_exchange', icon: '/brand/social-x.svg' },
+  { label: 'Discord', href: 'https://discord.gg/Wu5VmFfjSn', icon: '/brand/social-discord.svg' },
 ] as const;
 
 export const faqItems = [

@@ -425,7 +425,7 @@ a {
 }
 
 .rocky-homepage .cta-row {
-  width: 548px;
+  width: auto;
   max-width: 100%;
   margin-top: 2.15rem;
   gap: 12px;
@@ -449,6 +449,7 @@ a {
 }
 
 .rocky-homepage .hero-copy .primary-button {
+  flex: 0 0 auto;
   width: 248px;
   background: linear-gradient(90deg, #f5a85f 0%, #b0d6ea 100%);
   box-shadow: none;
@@ -1163,8 +1164,8 @@ a {
 }
 
 .rocky-homepage .trade-copy__cta {
-  width: 160px;
-  min-width: 160px;
+  width: 190px;
+  min-width: 190px;
   min-height: 44px;
   height: 44px;
   margin-top: 2.35rem;

@@ -101,14 +101,6 @@ export function HeroSection() {
           >
             LAUNCH APP <span aria-hidden="true">→</span>
           </a>
-          <a
-            className="ghost-button"
-            href="https://demo.rocky.exchange/dashboard"
-            target="_blank"
-            rel="noreferrer"
-          >
-            TRY DEMO
-          </a>
         </div>
       </div>
 
@@ -257,9 +249,13 @@ export function TradeSection() {
             </li>
           ))}
         </ul>
-        <a className="primary-button trade-copy__cta" href="#hero">
-          Try Demo
-          <span aria-hidden="true">→</span>
+        <a
+          className="primary-button trade-copy__cta"
+          href="https://app.rocky.exchange"
+          target="_blank"
+          rel="noreferrer"
+        >
+          LAUNCH APP
         </a>
       </div>
     </section>

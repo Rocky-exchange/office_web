@@ -1,7 +1,6 @@
 export const navigationItems = [
   { label: 'How It Works', href: '#mechanism' },
   { label: 'Trading Is Mining', href: '#trade' },
-  { label: 'Tokenomic', href: '#pocky' },
   { label: 'FAQ', href: '#faq' },
   { label: 'Docs', href: '#footer' },
 ] as const;

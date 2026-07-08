@@ -138,10 +138,11 @@ export const footerColumns = [
   {
     title: 'Learn',
     links: [
-      { label: 'Whitepaper', href: '#faq' },
-      { label: 'Documentation', href: '#footer' },
-      { label: 'Canton 101', href: '#why-rocky' },
-      { label: 'Tokenomics', href: '#pocky' },
+      { label: 'Doc', href: '#footer' },
+      {
+        label: 'Canton 101',
+        href: 'https://docs.daml.com/canton/architecture/overview.html#canton-101',
+      },
       { label: 'Research', href: '#mechanism' },
     ],
   },

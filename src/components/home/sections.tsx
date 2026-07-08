@@ -460,11 +460,20 @@ export function FooterSection() {
             <nav key={column.title} className="footer-column" aria-label={column.title}>
               <h3>{column.title}</h3>
               <div className="footer-column__links">
-                {column.links.map((link) => (
-                  <a key={link.label} href={link.href}>
-                    {link.label}
-                  </a>
-                ))}
+                {column.links.map((link) => {
+                  const isExternal = link.href.startsWith('http');
+                  return (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      {...(isExternal
+                        ? { target: '_blank', rel: 'noreferrer' }
+                        : {})}
+                    >
+                      {link.label}
+                    </a>
+                  );
+                })}
               </div>
             </nav>
           ))}

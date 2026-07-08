@@ -192,7 +192,7 @@ a {
   min-height: 2.82rem;
   min-width: 12.9rem;
   padding: 0 2.2rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: none;
   border-radius: 0;
   background: linear-gradient(90deg, #f5a85f 0%, #b0d6ea 100%);
   box-shadow: none;
@@ -303,7 +303,7 @@ a {
 }
 
 .rocky-homepage .primary-button--footer {
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: none;
   background: linear-gradient(90deg, #f5a85f 0%, #b0d6ea 100%);
   color: #090908;
 }
@@ -451,6 +451,7 @@ a {
 .rocky-homepage .hero-copy .primary-button {
   flex: 0 0 auto;
   width: 248px;
+  border: none;
   background: linear-gradient(90deg, #f5a85f 0%, #b0d6ea 100%);
   box-shadow: none;
   color: #11100d;
@@ -1170,6 +1171,7 @@ a {
   height: 44px;
   margin-top: 2.35rem;
   padding: 0 1.4rem;
+  border: none;
   border-radius: 0;
   background: linear-gradient(90deg, #f5a85f 0%, #b0d6ea 100%);
   box-shadow: none;

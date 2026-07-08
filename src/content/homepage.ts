@@ -120,7 +120,6 @@ export const tokenomicsAllocations = [
 
 export const footerCtaLinks = [
   { label: 'Launch App', href: 'https://app.rocky.exchange', variant: 'primary' },
-  { label: 'Whitepaper', href: '#faq', variant: 'ghost' },
 ] as const;
 
 export const footerColumns = [

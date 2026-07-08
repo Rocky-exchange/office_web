@@ -87,10 +87,12 @@ a {
   position: relative;
   width: 100%;
   overflow: hidden;
-  background:
-    radial-gradient(ellipse 48% 22% at 82% 12%, rgba(245, 168, 95, 0.14) 0%, rgba(245, 168, 95, 0.05) 38%, rgba(245, 168, 95, 0) 78%),
-    radial-gradient(ellipse 36% 18% at 14% 4%, rgba(176, 214, 234, 0.1) 0%, rgba(176, 214, 234, 0.03) 34%, rgba(176, 214, 234, 0) 76%),
-    linear-gradient(180deg, #17100c 0%, #120d0a 20%, #120d0a 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(18, 13, 10, 0) 0%,
+    #120d0a 14%,
+    #120d0a 100%
+  );
 }
 
 .rocky-homepage .site-header {
@@ -1683,7 +1685,6 @@ a {
   height: 100%;
   object-fit: cover;
   object-position: center 61%;
-  transform: scale(0.94);
   filter: saturate(0.74) brightness(0.66);
 }
 

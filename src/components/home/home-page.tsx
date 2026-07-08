@@ -4,7 +4,6 @@ import {
   HeroSection,
   MechanismSection,
   MoatsSection,
-  TokenomicsSection,
   TradeSection,
 } from '@/components/home/sections';
 import { FaqSection } from '@/components/home/faq-section';
@@ -33,7 +32,6 @@ export default function HomePage() {
       <TradeSection />
       <MechanismSection />
       <div className="tokenomics-faq-shell">
-        <TokenomicsSection />
         <FaqSection />
       </div>
       <FooterSection />

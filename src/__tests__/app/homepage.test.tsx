@@ -1,11 +1,7 @@
 import { render, screen } from '@testing-library/react';
 
 import HomePage from '@/components/home/home-page';
-import {
-  faqItems,
-  mechanismSteps,
-  tokenomicsAllocations,
-} from '@/content/homepage';
+import { faqItems, mechanismSteps } from '@/content/homepage';
 import { homepageUrl, siteMetadata, sitemapUrl } from '@/lib/metadata';
 import robots from '@/app/robots';
 import sitemap from '@/app/sitemap';
@@ -23,11 +19,10 @@ describe('homepage', () => {
     expect(labels).toEqual([
       'CANTON ENCRYPTS. ROCKY EARNS.',
       'Why Rocky Is Hard To Replicate',
-      'Every Trade You Make Produces ROCKY.',
+      'Every Trade You MakeProduces ROCKY.',
       'Trading is Mining.Holding is Discount.Loop Closes.',
-      '1 Billion ROCKY.Fixed Supply. Half to Users.',
       'Frequently Asked Questions',
-      'SEALED IN CANTON. FORGED IN ROCKY.',
+      'POWERED BY CANTON.DEFINED BY ROCKY.',
     ]);
   });
 
@@ -37,7 +32,7 @@ describe('homepage', () => {
     const nav = screen.getByRole('navigation', { name: /primary/i });
     const navLinks = screen.getAllByRole('link').filter((link) => nav.contains(link));
 
-    expect(navLinks).toHaveLength(5);
+    expect(navLinks).toHaveLength(4);
     expect(
       navLinks.map((link) => ({
         text: link.textContent,
@@ -46,20 +41,16 @@ describe('homepage', () => {
     ).toEqual([
       { text: 'How It Works', href: '#mechanism' },
       { text: 'Trading Is Mining', href: '#trade' },
-      { text: 'Tokenomic', href: '#pocky' },
       { text: 'FAQ', href: '#faq' },
       { text: 'Docs', href: '#footer' },
     ]);
 
     expect(
       screen.getAllByRole('link', { name: /launch app/i })[0],
-    ).toHaveAttribute('href', '#trade');
-    expect(
-      screen.getByRole('link', { name: /try demo/i }),
-    ).toHaveAttribute('href', 'https://demo.rocky.exchange/dashboard');
+    ).toHaveAttribute('href', 'https://app.rocky.exchange');
   });
 
-  test('renders mechanism, tokenomics, faq, and footer copy', () => {
+  test('renders mechanism, faq, and footer copy', () => {
     render(<HomePage />);
 
     const mechanismHeading = screen.getByRole('heading', {
@@ -82,22 +73,13 @@ describe('homepage', () => {
 
     expect(
       screen.getByRole('heading', {
-        name: /1 billion rocky\.\s*fixed supply\.\s*half to users\./i,
-      }),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByAltText(/rocky token allocation chart/i),
-    ).toHaveAttribute('src', expect.stringContaining('echarts-pie.svg'));
-
-    expect(
-      screen.getByRole('heading', {
         name: /frequently asked questions/i,
       }),
     ).toBeInTheDocument();
 
     expect(
       screen.getByRole('heading', {
-        name: /sealed in canton\. forged in rocky\./i,
+        name: /powered by canton\. defined by rocky\./i,
       }),
     ).toBeInTheDocument();
 
@@ -105,23 +87,10 @@ describe('homepage', () => {
       expect(screen.getByRole('heading', { name: step.title })).toBeInTheDocument();
       expect(screen.getByText(step.description)).toBeInTheDocument();
     });
-
-    const allocationList = screen.getByRole('list', { name: /rocky allocation/i });
-    tokenomicsAllocations.forEach((allocation) => {
-      expect(
-        allocationList.textContent,
-      ).toContain(`${allocation.share} ${allocation.label}. ${allocation.detail}`);
-    });
   });
 
   test('renders faq answers and homepage schema as crawlable html', () => {
     const { container } = render(<HomePage />);
-
-    expect(
-      screen
-        .getAllByRole('link', { name: /^launch app$/i })
-        .some((link) => link.getAttribute('href') === '#hero'),
-    ).toBe(true);
 
     faqItems.forEach((item) => {
       expect(screen.getByText(item.question)).toBeInTheDocument();

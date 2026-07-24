@@ -150,38 +150,38 @@ export const footerSocialLinks = [
 
 export const faqItems = [
   {
-    question: 'What is Canton Network and why build on it?',
+    question: 'What is Rocky?',
     answer:
-      'Canton is an enterprise-grade blockchain where every transaction is private by default — only the counterparties and validators see it. Unlike Ethereum or Solana, no one can scan the public mempool to front-run your trades. This is the only chain where a true MEV-free perpetual DEX is structurally possible.',
+      'Rocky is the trading and liquidity layer for Canton. Its initial product combines privacy-enabled perpetual markets, Canton-native spot markets, responsive execution, and Canton-native settlement workflows.',
   },
   {
-    question: 'What makes Rocky better than traditional brokers?',
+    question: 'How does privacy work on Rocky?',
     answer:
-      'Rocky combines CEX-class speed with protocol-level privacy, on-chain provable margin, and a token loop that pays active users instead of extracting from them.',
+      'Canton uses selective visibility: transaction information is shared with the parties and service providers required for a workflow instead of being broadcast globally. Privacy does not mean anonymity or the absence of compliance, audit, and risk controls.',
   },
   {
-    question: 'What happens if ROCKY token price drops to zero?',
+    question: 'What can I trade?',
     answer:
-      'Trading still works. The venue is designed to stand on execution quality first, while the ROCKY loop adds fee and participation upside on top.',
+      'Rocky supports spot and perpetual markets. Markets can be added, paused, or updated, so the live Rocky application is always the source of truth for availability, settlement assets, leverage, fees, and order specifications.',
   },
   {
-    question: 'How do I earn ROCKY by trading?',
+    question: 'How do I get started?',
     answer:
-      'Eligible fills participate in Rocky’s mining logic. Rewards are shown on the order panel so the economics are legible before you trade.',
+      'Open the live Rocky application, review the available markets and current specifications, fund your trading account with a supported asset, and choose a market that fits your objectives and risk tolerance.',
   },
   {
-    question: 'What Makes This Different From HyperLiquid Or DYdX?',
+    question: 'How do I fund my Rocky trading account?',
     answer:
-      'Rocky is built around private execution and protocol-native collateral security. That changes the trust model, not just the interface.',
+      'Open the funding flow in Rocky, select a supported asset, and follow the instructions shown in the product. Only assets credited to your Rocky trading account are available for trading.',
   },
   {
-    question: 'Is My Wallet Or Personal Data Exposed?',
+    question: 'What fees and risks should I review?',
     answer:
-      'No. Rocky is designed to minimize public exposure of trading intent and settlement details, reducing the surface area for copy trading, front-running, and behavioral leakage.',
+      'Review maker and taker fees, funding, settlement costs, leverage, maintenance margin, and order specifications in the live application before trading. Digital assets and perpetual contracts involve substantial market, leverage, liquidity, network, account, and operational risk.',
   },
   {
-    question: "When Can I Trade? What's The Roadmap?",
+    question: 'Where can I follow Rocky\'s roadmap?',
     answer:
-      'The roadmap will be published alongside launch milestones. The FAQ section is structured to expand as product timelines and access details are finalized.',
+      'Rocky\'s roadmap is published in the official documentation. It describes a direction of travel across trading, stablecoin liquidity, RWA markets, capital-management products, and wider Canton liquidity infrastructure; it is not a promise of fixed launch dates.',
   },
 ] as const;

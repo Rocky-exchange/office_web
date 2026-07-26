@@ -4,6 +4,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState, type FormEvent } from 'react';
 
+import {
+  OgAccessApiError,
+  submitOgApplication,
+} from '@/lib/og-access-api';
 import type { OgApplicationInput } from '@/types/og-access';
 import styles from './og-access.module.css';
 
@@ -156,32 +160,19 @@ export function OgApplicationForm() {
     try {
       const params = new URLSearchParams(window.location.search);
       const source = params.get('utm_source') || 'rocky-website';
-      const response = await fetch('/api/og-applications', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, source }),
-      });
-      const result = (await response.json()) as {
-        ok: boolean;
-        applicationId?: string;
-        submittedAt?: string;
-        message?: string;
-        errors?: FieldErrors;
-      };
-
-      if (!response.ok || !result.ok || !result.applicationId) {
-        setErrors(result.errors ?? {});
-        setSubmitError(
-          result.message ?? 'Unable to submit your application. Please try again.',
-        );
+      if (form.website) {
+        setSubmitError('Unable to submit this application.');
         return;
       }
 
+      const result = await submitOgApplication({ ...form, source });
       setApplicationId(result.applicationId);
-      setSubmittedAt(result.submittedAt ?? new Date().toISOString());
-    } catch {
+      setSubmittedAt(result.submittedAt);
+    } catch (error) {
       setSubmitError(
-        'The application service is temporarily unavailable. Please try again.',
+        error instanceof OgAccessApiError
+          ? error.message
+          : 'The application service is temporarily unavailable. Please try again.',
       );
     } finally {
       setSubmitting(false);

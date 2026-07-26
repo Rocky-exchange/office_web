@@ -4,6 +4,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState, type FormEvent } from 'react';
 
+import {
+  OgAccessApiError,
+  resolveOgApplication,
+  submitOgContribution,
+} from '@/lib/og-access-api';
 import type { OgContributionInput } from '@/types/og-access';
 import styles from './og-access.module.css';
 
@@ -66,10 +71,19 @@ function validateStep(step: number, form: OgContributionInput) {
   const errors: FieldErrors = {};
 
   if (step === 0) {
-    if (!/^OG-APP-[A-Z0-9]{8}$/.test(form.applicationId.trim().toUpperCase())) {
+    const applicationId = form.applicationId.trim().toUpperCase();
+    const email = form.email.trim();
+
+    if (!applicationId && !email) {
+      errors.applicationId = 'Enter your OG application reference or email.';
+      errors.email = 'Enter your OG application reference or email.';
+    } else if (
+      applicationId &&
+      !/^OG-APP-[A-Z0-9]{8}$/.test(applicationId)
+    ) {
       errors.applicationId = 'Enter a valid OG application reference.';
     }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) {
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       errors.email = 'Enter the email used in your OG application.';
     }
   }
@@ -123,7 +137,9 @@ export function OgContributionForm({
   });
   const [errors, setErrors] = useState<FieldErrors>({});
   const [submitting, setSubmitting] = useState(false);
+  const [resolving, setResolving] = useState(false);
   const [submitError, setSubmitError] = useState('');
+  const [resolutionMessage, setResolutionMessage] = useState('');
   const [updateId, setUpdateId] = useState('');
 
   function updateField<Key extends keyof OgContributionInput>(
@@ -131,6 +147,10 @@ export function OgContributionForm({
     value: OgContributionInput[Key],
   ) {
     setForm((current) => ({ ...current, [key]: value }));
+    if (key === 'applicationId' || key === 'email') {
+      setResolutionMessage('');
+      setSubmitError('');
+    }
     setErrors((current) => {
       const next = { ...current };
       delete next[key];
@@ -138,21 +158,81 @@ export function OgContributionForm({
     });
   }
 
-  function goForward() {
+  async function resolveApplication(
+    values: { applicationId?: string; email?: string } = {},
+    showError = true,
+  ) {
+    const applicationId =
+      values.applicationId ?? form.applicationId.trim().toUpperCase();
+    const email = values.email ?? form.email.trim().toLowerCase();
+    const hasValidReference = /^OG-APP-[A-Z0-9]{8}$/.test(applicationId);
+    const hasValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    if (!hasValidReference && !hasValidEmail) {
+      return null;
+    }
+
+    setResolving(true);
+    if (showError) {
+      setSubmitError('');
+    }
+
+    try {
+      const resolution = await resolveOgApplication({
+        applicationId: hasValidReference ? applicationId : undefined,
+        email: hasValidEmail ? email : undefined,
+      });
+      setForm((current) => ({
+        ...current,
+        applicationId: resolution.applicationId,
+        email: resolution.email,
+      }));
+      setErrors({});
+      setResolutionMessage(
+        resolution.windowOpen
+          ? 'Application matched. Reference and email are linked.'
+          : '',
+      );
+
+      if (!resolution.windowOpen) {
+        setSubmitError('The 96-hour contribution window has closed.');
+        return null;
+      }
+
+      return resolution;
+    } catch (error) {
+      if (showError) {
+        setSubmitError(
+          error instanceof OgAccessApiError
+            ? error.message
+            : 'Unable to find the OG application. Please try again.',
+        );
+      }
+      return null;
+    } finally {
+      setResolving(false);
+    }
+  }
+
+  async function goForward() {
     const nextErrors = validateStep(step, form);
     if (Object.keys(nextErrors).length > 0) {
       setErrors(nextErrors);
       return;
     }
-    setErrors({});
-    setStep(1);
+
+    const resolution = await resolveApplication();
+    if (resolution) {
+      setErrors({});
+      setStep(1);
+    }
   }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     if (step === 0) {
-      goForward();
+      await goForward();
       return;
     }
 
@@ -166,30 +246,18 @@ export function OgContributionForm({
     setSubmitError('');
 
     try {
-      const response = await fetch('/api/og-contributions', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      });
-      const result = (await response.json()) as {
-        ok: boolean;
-        updateId?: string;
-        message?: string;
-        errors?: FieldErrors;
-      };
-
-      if (!response.ok || !result.ok || !result.updateId) {
-        setErrors(result.errors ?? {});
-        setSubmitError(
-          result.message ?? 'Unable to submit your update. Please try again.',
-        );
+      if (form.website) {
+        setSubmitError('Unable to submit this contribution update.');
         return;
       }
 
+      const result = await submitOgContribution(form);
       setUpdateId(result.updateId);
-    } catch {
+    } catch (error) {
       setSubmitError(
-        'The contribution service is temporarily unavailable. Please try again.',
+        error instanceof OgAccessApiError
+          ? error.message
+          : 'The contribution service is temporarily unavailable. Please try again.',
       );
     } finally {
       setSubmitting(false);
@@ -336,6 +404,16 @@ export function OgContributionForm({
                               event.target.value.toUpperCase(),
                             )
                           }
+                          onBlur={(event) => {
+                            const applicationId =
+                              event.target.value.trim().toUpperCase();
+                            if (
+                              /^OG-APP-[A-Z0-9]{8}$/.test(applicationId) &&
+                              !form.email.trim()
+                            ) {
+                              void resolveApplication({ applicationId });
+                            }
+                          }}
                           placeholder="OG-APP-XXXXXXXX"
                           autoComplete="off"
                           aria-invalid={Boolean(errors.applicationId)}
@@ -358,6 +436,15 @@ export function OgContributionForm({
                           onChange={(event) =>
                             updateField('email', event.target.value)
                           }
+                          onBlur={(event) => {
+                            const email = event.target.value.trim().toLowerCase();
+                            if (
+                              /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) &&
+                              !form.applicationId.trim()
+                            ) {
+                              void resolveApplication({ email });
+                            }
+                          }}
                           placeholder="you@example.com"
                           autoComplete="email"
                           aria-invalid={Boolean(errors.email)}
@@ -366,6 +453,15 @@ export function OgContributionForm({
                           <p className={styles.fieldError}>{errors.email}</p>
                         )}
                       </div>
+                      {resolutionMessage && (
+                        <p
+                          className={styles.resolutionMessage}
+                          role="status"
+                          aria-live="polite"
+                        >
+                          ✓ {resolutionMessage}
+                        </p>
+                      )}
                     </>
                   )}
 
@@ -464,14 +560,18 @@ export function OgContributionForm({
                   <button
                     type="submit"
                     className={styles.primaryAction}
-                    disabled={submitting}
+                    disabled={submitting || resolving}
                   >
                     {step === 1
                       ? submitting
                         ? 'RECORDING...'
                         : 'SUBMIT UPDATE'
-                      : 'CONTINUE'}
-                    {!submitting && <span aria-hidden="true">→</span>}
+                      : resolving
+                        ? 'LOOKING UP...'
+                        : 'CONTINUE'}
+                    {!submitting && !resolving && (
+                      <span aria-hidden="true">→</span>
+                    )}
                   </button>
                 </div>
               </form>

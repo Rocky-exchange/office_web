@@ -31,7 +31,7 @@ describe('OG access application', () => {
     ).toBeInTheDocument();
 
     fireEvent.change(screen.getByLabelText('LINK TO YOUR X POST'), {
-      target: { value: 'https://x.com/rocky_test/status/123456789' },
+      target: { value: 'https://x.com/test1' },
     });
     fireEvent.click(screen.getByRole('button', { name: /continue/i }));
 

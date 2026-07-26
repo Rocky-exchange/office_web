@@ -51,7 +51,7 @@ function isXPostUrl(value: string) {
     return (
       url.protocol === 'https:' &&
       (hostname === 'x.com' || hostname === 'twitter.com') &&
-      url.pathname.split('/').filter(Boolean).length >= 3
+      url.pathname.split('/').filter(Boolean).length >= 1
     );
   } catch {
     return false;

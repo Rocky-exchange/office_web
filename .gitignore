@@ -4,3 +4,5 @@ coverage
 tsconfig.tsbuildinfo
 dist
 .claude
+data/og-applications.csv
+data/og-contribution-updates.csv

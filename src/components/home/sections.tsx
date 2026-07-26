@@ -101,7 +101,25 @@ export function HeroSection() {
           >
             LAUNCH APP <span aria-hidden="true">→</span>
           </a>
+          {/*
+            Season 0 OG entry points are intentionally hidden on the homepage
+            until the public application window is ready to open.
+          <a
+            className="primary-button hero-og-button"
+            href="/og-access"
+          >
+            <span className="hero-og-button__label">APPLY FOR OG ACCESS</span>
+            <span className="hero-og-button__arrow" aria-hidden="true">→</span>
+          </a>
+          */}
         </div>
+        {/*
+        <a className="hero-contribution-link" href="/og-access/update">
+          <span>[ ALREADY APPLIED? ]</span>
+          SUBMIT X CONTRIBUTION UPDATE
+          <span aria-hidden="true">→</span>
+        </a>
+        */}
       </div>
 
       <div className="stat-strip">
@@ -227,8 +245,8 @@ export function TradeSection() {
           to you.
         </p>
         <p className="trade-description">
-          The moment your order is executed, mining rewards are sent to your
-          wallet in real time.
+              The moment your order is executed, mining rewards are credited to
+              your Rocky account in real time.
         </p>
         <ul className="trade-points">
           {tradePoints.map((point) => (

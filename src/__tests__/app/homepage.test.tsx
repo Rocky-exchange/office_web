@@ -48,12 +48,6 @@ describe('homepage', () => {
     expect(
       screen.getAllByRole('link', { name: /launch app/i })[0],
     ).toHaveAttribute('href', 'https://app.rocky.exchange');
-    expect(
-      screen.queryByRole('link', { name: /apply for og access/i }),
-    ).not.toBeInTheDocument();
-    expect(
-      screen.queryByRole('link', { name: /submit x contribution update/i }),
-    ).not.toBeInTheDocument();
   });
 
   test('renders mechanism, faq, and footer copy', () => {

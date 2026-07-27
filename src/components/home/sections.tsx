@@ -37,7 +37,13 @@ export function Header() {
 
       <nav className="site-nav" aria-label="Primary">
         {navigationItems.map((item) => (
-          <a key={item.label} href={item.href}>
+          <a
+            key={item.label}
+            href={item.href}
+            {...(item.href.startsWith('http')
+              ? { target: '_blank', rel: 'noreferrer' }
+              : {})}
+          >
             {item.label}
           </a>
         ))}

@@ -42,8 +42,17 @@ describe('homepage', () => {
       { text: 'How It Works', href: '#mechanism' },
       { text: 'Trading Is Mining', href: '#trade' },
       { text: 'FAQ', href: '#faq' },
-      { text: 'Docs', href: '#footer' },
+      { text: 'Docs', href: 'https://doc.rocky.exchange/' },
     ]);
+
+    expect(screen.getByRole('link', { name: 'Docs' })).toHaveAttribute(
+      'target',
+      '_blank',
+    );
+    expect(screen.getByRole('link', { name: 'Doc' })).toHaveAttribute(
+      'href',
+      'https://doc.rocky.exchange/',
+    );
 
     expect(
       screen.getAllByRole('link', { name: /launch app/i })[0],

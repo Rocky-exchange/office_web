@@ -2,7 +2,7 @@ export const navigationItems = [
   { label: 'How It Works', href: '#mechanism' },
   { label: 'Trading Is Mining', href: '#trade' },
   { label: 'FAQ', href: '#faq' },
-  { label: 'Docs', href: '#footer' },
+  { label: 'Docs', href: 'https://doc.rocky.exchange/' },
 ] as const;
 
 export const heroStats = [
@@ -133,7 +133,7 @@ export const footerColumns = [
   {
     title: 'Learn',
     links: [
-      { label: 'Doc', href: '#footer' },
+      { label: 'Doc', href: 'https://doc.rocky.exchange/' },
       {
         label: 'Canton 101',
         href: 'https://docs.daml.com/canton/architecture/overview.html#canton-101',

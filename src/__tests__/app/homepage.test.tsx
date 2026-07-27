@@ -49,11 +49,11 @@ describe('homepage', () => {
       screen.getAllByRole('link', { name: /launch app/i })[0],
     ).toHaveAttribute('href', 'https://app.rocky.exchange');
     expect(
-      screen.queryByRole('link', { name: /apply for og access/i }),
-    ).not.toBeInTheDocument();
+      screen.getByRole('link', { name: /apply for og access/i }),
+    ).toHaveAttribute('href', '/og-access');
     expect(
-      screen.queryByRole('link', { name: /submit x contribution update/i }),
-    ).not.toBeInTheDocument();
+      screen.getByRole('link', { name: /submit x contribution update/i }),
+    ).toHaveAttribute('href', '/og-access/update');
   });
 
   test('renders mechanism, faq, and footer copy', () => {

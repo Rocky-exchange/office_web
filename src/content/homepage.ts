@@ -146,6 +146,7 @@ export const footerColumns = [
 export const footerSocialLinks = [
   { label: 'X', href: 'https://x.com/Rocky_exchange', icon: '/brand/social-x.svg' },
   { label: 'Discord', href: 'https://discord.gg/Wu5VmFfjSn', icon: '/brand/social-discord.svg' },
+  { label: 'Telegram', href: 'https://t.me/Rockyexchangecommunity', icon: '/brand/social-tg.svg' },
 ] as const;
 
 export const faqItems = [

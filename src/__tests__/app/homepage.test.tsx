@@ -45,14 +45,18 @@ describe('homepage', () => {
       { text: 'Docs', href: 'https://doc.rocky.exchange/' },
     ]);
 
-    expect(screen.getByRole('link', { name: 'Docs' })).toHaveAttribute(
-      'target',
-      '_blank',
-    );
-    expect(screen.getByRole('link', { name: 'Doc' })).toHaveAttribute(
-      'href',
-      'https://doc.rocky.exchange/',
-    );
+    const docsLinks = screen.getAllByRole('link', { name: 'Docs' });
+    expect(docsLinks).toHaveLength(2);
+    docsLinks.forEach((link) => {
+      expect(link).toHaveAttribute('href', 'https://doc.rocky.exchange/');
+      expect(link).toHaveAttribute('target', '_blank');
+    });
+    expect(
+      screen.queryByRole('link', { name: 'API / gRPC' }),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole('link', { name: 'Research' }),
+    ).not.toBeInTheDocument();
 
     expect(
       screen.getAllByRole('link', { name: /launch app/i })[0],

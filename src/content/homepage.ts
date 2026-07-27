@@ -127,18 +127,16 @@ export const footerColumns = [
     title: 'Product',
     links: [
       { label: 'Trading App', href: 'https://app.rocky.exchange/trade' },
-      { label: 'API / gRPC', href: 'https://developers.rocky.exchange/' },
     ],
   },
   {
     title: 'Learn',
     links: [
-      { label: 'Doc', href: 'https://doc.rocky.exchange/' },
+      { label: 'Docs', href: 'https://doc.rocky.exchange/' },
       {
         label: 'Canton 101',
         href: 'https://docs.daml.com/canton/architecture/overview.html#canton-101',
       },
-      { label: 'Research', href: '#mechanism' },
     ],
   },
 ] as const;

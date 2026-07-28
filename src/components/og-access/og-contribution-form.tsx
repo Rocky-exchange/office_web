@@ -388,6 +388,11 @@ export function OgContributionForm({
                         <span>
                           Use the reference shown after your OG application.
                           Your email must match the original application.
+                          <strong>
+                            Forgot your OG reference? Leave the field blank and
+                            enter your application email below—we&apos;ll
+                            automatically match and display it.
+                          </strong>
                         </span>
                       </div>
                       <div className={styles.field}>

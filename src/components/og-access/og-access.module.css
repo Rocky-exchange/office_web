@@ -564,9 +564,17 @@
 }
 
 .windowNote span {
+  display: block;
   color: rgba(255, 255, 255, 0.5);
   font-size: 0.7rem;
   line-height: 1.55;
+}
+
+.windowNote strong {
+  display: block;
+  margin-top: 0.45rem;
+  color: rgba(255, 255, 255, 0.78);
+  font-weight: 500;
 }
 
 .postSection {

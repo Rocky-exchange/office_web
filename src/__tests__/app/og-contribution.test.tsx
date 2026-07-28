@@ -55,6 +55,10 @@ describe('OG contribution update', () => {
 
     render(<OgContributionForm />);
 
+    expect(
+      screen.getByText(/forgot your og reference/i),
+    ).toBeInTheDocument();
+
     const email = screen.getByLabelText('APPLICATION EMAIL');
     fireEvent.change(email, {
       target: { value: 'applicant@example.com' },

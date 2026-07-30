@@ -55,7 +55,7 @@ export function Header() {
         <AudioToggle />
         <a
           className="primary-button primary-button--header"
-          href="https://app.rocky.exchange"
+          href="https://app.rockytest.xyz"
           target="_blank"
           rel="noreferrer"
         >
@@ -95,7 +95,7 @@ export function HeroSection() {
         <div className="cta-row">
           <a
             className="primary-button"
-            href="https://app.rocky.exchange"
+            href="https://app.rockytest.xyz"
             target="_blank"
             rel="noreferrer"
           >
@@ -263,7 +263,7 @@ export function TradeSection() {
         </ul>
         <a
           className="primary-button trade-copy__cta"
-          href="https://app.rocky.exchange"
+          href="https://app.rockytest.xyz"
           target="_blank"
           rel="noreferrer"
         >

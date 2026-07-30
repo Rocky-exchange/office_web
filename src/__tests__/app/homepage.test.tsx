@@ -45,9 +45,11 @@ describe('homepage', () => {
       { text: 'Docs', href: '#footer' },
     ]);
 
-    expect(
-      screen.getAllByRole('link', { name: /launch app/i })[0],
-    ).toHaveAttribute('href', 'https://app.rocky.exchange');
+    const launchAppLinks = screen.getAllByRole('link', { name: /launch app/i });
+    expect(launchAppLinks).toHaveLength(4);
+    launchAppLinks.forEach((link) => {
+      expect(link).toHaveAttribute('href', 'https://app.rockytest.xyz');
+    });
     expect(
       screen.getByRole('link', { name: /apply for og access/i }),
     ).toHaveAttribute('href', '/og-access');

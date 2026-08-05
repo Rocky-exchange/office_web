@@ -127,6 +127,7 @@ export const footerColumns = [
     title: 'Product',
     links: [
       { label: 'Trading App', href: 'https://app.rocky.exchange/trade' },
+      { label: 'Wallet', href: 'https://extension.rocky.exchange/' },
     ],
   },
   {

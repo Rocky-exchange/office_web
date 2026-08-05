@@ -57,6 +57,14 @@ describe('homepage', () => {
     expect(
       screen.queryByRole('link', { name: 'Research' }),
     ).not.toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Wallet' })).toHaveAttribute(
+      'href',
+      'https://extension.rocky.exchange/',
+    );
+    expect(screen.getByRole('link', { name: 'Wallet' })).toHaveAttribute(
+      'target',
+      '_blank',
+    );
 
     expect(
       screen.getAllByRole('link', { name: /launch app/i })[0],

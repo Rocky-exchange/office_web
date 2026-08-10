@@ -15,4 +15,4 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ubuntu
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: bash ~/office.sh
+          script: bash /home/ubuntu/deploy/office.sh

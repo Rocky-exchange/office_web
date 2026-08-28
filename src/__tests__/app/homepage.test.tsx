@@ -128,11 +128,13 @@ describe('homepage', () => {
       container.querySelectorAll('script[type="application/ld+json"]'),
     ).map((script) => script.textContent);
 
-    expect(schemaScripts).toHaveLength(2);
+    expect(schemaScripts).toHaveLength(3);
     expect(schemaScripts[0]).toContain('"@type":"Organization"');
-    expect(schemaScripts[1]).toContain('"@type":"FAQPage"');
-    expect(schemaScripts[1]).toContain(faqItems[0].question);
-    expect(schemaScripts[1]).not.toContain('</script>');
+    expect(schemaScripts[0]).toContain('https://x.com/Rocky_exchange');
+    expect(schemaScripts[1]).toContain('"@type":"WebSite"');
+    expect(schemaScripts[2]).toContain('"@type":"FAQPage"');
+    expect(schemaScripts[2]).toContain(faqItems[0].question);
+    expect(schemaScripts[2]).not.toContain('</script>');
   });
 
   test('exports crawlable seo metadata for robots and sitemap', async () => {
@@ -154,13 +156,9 @@ describe('homepage', () => {
     );
 
     const sitemapMetadata = await sitemap();
-    expect(sitemapMetadata).toEqual([
-      {
-        url: homepageUrl,
-      },
-    ]);
-    expect(sitemapMetadata.map((entry) => entry.url).join('\n')).toBe(
+    expect(sitemapMetadata.map((entry) => entry.url)).toEqual([
       'https://rocky.exchange/',
-    );
+      'https://rocky.exchange/og-access/',
+    ]);
   });
 });

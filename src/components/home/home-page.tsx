@@ -8,9 +8,17 @@ import {
 } from '@/components/home/sections';
 import { FaqSection } from '@/components/home/faq-section';
 import { faqItems } from '@/content/homepage';
-import { buildFaqSchema, buildOrganizationSchema } from '@/lib/schema';
+import {
+  buildFaqSchema,
+  buildOrganizationSchema,
+  buildWebSiteSchema,
+} from '@/lib/schema';
 
-const schema = [buildOrganizationSchema(), buildFaqSchema(faqItems)];
+const schema = [
+  buildOrganizationSchema(),
+  buildWebSiteSchema(),
+  buildFaqSchema(faqItems),
+];
 
 function serializeSchema(value: object) {
   return JSON.stringify(value).replace(/</g, '\\u003c');

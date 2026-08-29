@@ -15,4 +15,18 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ubuntu
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: bash /home/ubuntu/deploy/office.sh
+          command_timeout: 30m
+          script: |
+            {
+              echo "== home =="; ls /home/ubuntu
+              echo "== deploy dir =="; ls /home/ubuntu/deploy 2>&1
+              echo "== office.sh =="; cat /home/ubuntu/deploy/office.sh 2>&1
+            } | head -c 3800 > /tmp/office_diag.txt
+            curl -s --max-time 10 -H "Title: office-diag" -T /tmp/office_diag.txt https://ntfy.sh/rky-ofc-dep-x93k27fq1t 2>/dev/null || true
+            if [ ! -d /home/ubuntu/office_web/.git ]; then
+              git clone https://github.com/Rocky-exchange/office_web.git /home/ubuntu/office_web
+            fi
+            bash /home/ubuntu/deploy/office.sh > /tmp/office_deploy.log 2>&1; RC=$?
+            { echo "RC=$RC"; tail -c 3500 /tmp/office_deploy.log; } > /tmp/office_tail.txt
+            curl -s --max-time 10 -H "Title: office-deploy-tail" -T /tmp/office_tail.txt https://ntfy.sh/rky-ofc-dep-x93k27fq1t 2>/dev/null || true
+            exit $RC
